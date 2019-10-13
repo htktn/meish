@@ -55,4 +55,13 @@ $ docker-compose logs -ft front # frontのログ
 $ docker-compose logs -ft db # dbのログ
 ```
 
+## 本番環境への移行
 
+```sh
+$ export RAILS_ENV=production
+$ rake db:migrate RAILS_ENV=production
+```
+
+- nginxのコンテナ立てる
+- 共有ネットワーク作成
+- ドメインで振り分け
