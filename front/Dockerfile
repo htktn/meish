@@ -5,4 +5,5 @@ WORKDIR /app
 COPY /src /app/src
 COPY ["package.json", "./"]
 
+RUN npm install react-scripts
 RUN npm install --production --silent
