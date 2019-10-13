@@ -13,11 +13,11 @@ ADD Gemfile Gemfile
 
 ADD Gemfile.lock Gemfile.lock
 
+RUN gem install bundler
+
 RUN bundle install
 
 RUN mkdir -p app
-
-RUN gem install bundler
 
 WORKDIR /app
 

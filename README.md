@@ -12,7 +12,8 @@ $ make up　# 起動
 
 ここまでやった時点で上手く行っていれば、[http://localhost:3000/](http://localhost:3000/)でRailsの初期画面が、[http://localhost:8080/](http://localhost:8080/)でReactの初期画面が見れるはず。。
 
-## backend
+## コマンドまとめ
+### backend
 
 [http://localhost:3000/](http://localhost:3000/)
 
@@ -27,7 +28,7 @@ $ make back/shell # コンテナに入る
 $ docker-compose run back bundle exec rails g model Hoge
 ```
 
-## frontend
+### frontend
 
 [http://localhost:8080/](http://localhost:8080/)
 
@@ -39,9 +40,19 @@ $ make front/shell # コンテナに入る
 $ docker-compose run front npm install
 ```
 
-## db
+### db
 
 ```sh
 $ make mysql # mysqlのコンソールに入る
 # mysql>
 ```
+
+### ログを見たい時
+
+```sh
+$ docker-compose logs -ft back # backのログ
+$ docker-compose logs -ft front # frontのログ
+$ docker-compose logs -ft db # dbのログ
+```
+
+
