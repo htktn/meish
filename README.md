@@ -59,8 +59,8 @@ $ docker-compose logs -ft db # dbのログ
 
 ```sh
 $ export RAILS_ENV=production
-$ rake db:create RAILS_ENV=production
-$ rake db:migrate RAILS_ENV=production
+$ docker-compose run back bundle exec rails db:create RAILS_ENV=production
+$ docker-compose run back bundle exec rails db:migrate RAILS_ENV=production
 ```
 
 - nginxのコンテナ立てる
