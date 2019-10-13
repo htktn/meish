@@ -18,17 +18,21 @@ clean:
 	@docker volume prune
 
 setup:
+	@$(FIG) run back bundle install
 	@$(FIG) run back bundle exec rails db:create
 	@$(FIG) run back bundle exec rails db:migrate
 
 back/console:
 	@$(FIG) run back bundle exec rails console
 
-migrate/up:
-	@$(FIG) run back bundle exec rails db:migrate
-
 back/shell:
 	@$(FIG) run back /bin/bash
+
+back/install:
+	@$(FIG) run back bundle install
+
+migrate/up:
+	@$(FIG) run back bundle exec rails db:migrate
 
 front/shell:
 	@$(FIG) run front /bin/sh
