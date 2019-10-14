@@ -31,6 +31,9 @@ back/shell:
 back/install:
 	@$(FIG) run back bundle install
 
+back/gemlist:
+	@$(FIG) run back bundle exec gem list
+
 migrate/up:
 	@$(FIG) run back bundle exec rails db:migrate
 
