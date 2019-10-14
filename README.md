@@ -7,6 +7,8 @@ $ make build
 $ make setup # 各種セットアップ
 $ make up　# 起動
 
+$ make down # remove container
+
 # 他のコマンドは meish/Makefile に書いてある。
 ```
 
@@ -20,6 +22,7 @@ $ make up　# 起動
 ```sh
 $ make migrate/up # => rails db:migrate
 $ make console # => rails c
+$ make back/install # => bundle install
 
 $ make back/shell # コンテナに入る
 
