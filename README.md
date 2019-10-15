@@ -37,6 +37,8 @@ $ docker-compose run back bundle exec rails g model Hoge
 
 [http://localhost:8080/](http://localhost:8080/)
 
+frontendはmake upし直さなくても変更が反映されるはず。
+
 ```sh
 $ make front/shell # コンテナに入る
 
