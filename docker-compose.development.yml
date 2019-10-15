@@ -7,6 +7,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
+    volumes:
+      - datavol:/var/lib/mysql
   back:
     build: back/
     container_name: meish_back
@@ -33,3 +35,4 @@ services:
       - ./front:/app
 volumes:
   bundle_path:
+  datavol:

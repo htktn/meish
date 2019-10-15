@@ -19,6 +19,8 @@ $ make down # remove container
 
 [http://localhost:3000/](http://localhost:3000/)
 
+コードを変更したらその都度make upしよう。
+
 ```sh
 $ make migrate/up # => rails db:migrate
 $ make console # => rails c
