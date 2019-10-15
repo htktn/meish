@@ -4,7 +4,7 @@
 
 ```sh
 $ make build
-$ make setup # 各種セットアップ
+$ make setup # 各種セットアップ（最初の一回だけで良いように実装したはず）
 $ make up　# 起動
 
 $ make down # remove container
