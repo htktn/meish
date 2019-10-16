@@ -60,11 +60,11 @@ Content-Type: application/json
   ]
 }
 ```
+</details>
 
 ### GET /themes
 
-[説明]
-
+テーマ一覧を取得する。
 
 **response**
 
@@ -75,7 +75,9 @@ Content-Type: application/json
 ```json
 {
   "themes": [
-    "id": 1
+    {
+      "id": 1
+    }
   ]
 }
 ```
