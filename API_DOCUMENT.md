@@ -1,3 +1,5 @@
+# APIの仕様書
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -6,8 +8,6 @@
   - [GET /themes](#get-themes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# APIの仕様書
 
 ## テンプレート
 
