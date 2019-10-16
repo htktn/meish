@@ -20,7 +20,8 @@
 Content-Type: application/json
 
 <details><summary>body（クリックして展開）</summary>
-
+<br>
+ 
 ```json
 {
   "hoge": 1
@@ -34,6 +35,7 @@ Content-Type: application/json
 Content-Type: application/json
 
 <details><summary>body（クリックして展開）</summary>
+<br>  
 
 ```json
 {
@@ -53,6 +55,7 @@ Content-Type: application/json
 Content-Type: application/json
 
 <details><summary>body（クリックして展開）</summary>
+<br>  
 
 ```json
 {
@@ -80,6 +83,7 @@ Content-Type: application/json
 Content-Type: application/json
 
 <details><summary>body（クリックして展開）</summary>
+<br>  
 
 ```json
 {
