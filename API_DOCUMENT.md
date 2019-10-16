@@ -1,8 +1,8 @@
 # APIの仕様書
 
-テンプレート
+## テンプレート
 
-## POST /hoge
+### GET /hoge
 
 [説明]
 
@@ -25,7 +25,9 @@
 ```
 </details>
 
-## GET /cards
+## API一覧
+
+### GET /cards
 交換した名刺の一覧を取得する。
 
 <details><summary>response body（クリックして展開）</summary>
