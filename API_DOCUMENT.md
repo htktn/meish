@@ -25,8 +25,7 @@
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>  
+body  
 
 ```json
 {
@@ -43,7 +42,6 @@ Content-Type: application/json
   ]
 }
 ```
-</details>
 
 ### GET /cards/:id
 
@@ -53,22 +51,19 @@ Content-Type: application/json
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>
+body
  
 ```json
 {
   "user_id": 12
 }
 ```
-</details>
 
 **response**
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>  
+body  
 
 ```json
 {
@@ -81,7 +76,6 @@ Content-Type: application/json
   "user_id": 12
 }
 ```
-</details>
 
 ### POST /cards
 
@@ -91,8 +85,7 @@ Content-Type: application/json
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>
+body
  
 ```json
 {
@@ -104,8 +97,6 @@ Content-Type: application/json
   "user_id": 12
 }
 ```
-
-</details>
 
 **response**
 
@@ -123,8 +114,7 @@ Content-Type: application/json
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>
+body
  
 ```json
 {
@@ -137,8 +127,6 @@ Content-Type: application/json
   "user_id": 12
 }
 ```
-
-</details>
 
 **response**
 
@@ -156,8 +144,7 @@ Content-Type: application/json
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>
+body
  
 ```json
 {
@@ -165,8 +152,6 @@ Content-Type: application/json
   "user_id": 1
 }
 ```
-
-</details>
 
 **response**
 
@@ -184,8 +169,7 @@ Content-Type: application/json
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>  
+body  
 
 ```json
 {
@@ -196,7 +180,6 @@ Content-Type: application/json
   ]
 }
 ```
-</details>
 
 ## テンプレート
 
@@ -208,8 +191,7 @@ Content-Type: application/json
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>
+body
  
 ```json
 {
@@ -217,18 +199,14 @@ Content-Type: application/json
 }
 ```
 
-</details>
-
 **response**
 
 Content-Type: application/json
 
-<details><summary>body（クリックして展開）</summary>
-<br>  
+body  
 
 ```json
 {
   "hoge": 1
 }
 ```
-</details>
