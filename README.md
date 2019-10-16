@@ -1,19 +1,16 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [Meish](#meish)
-  - [最初にやること](#%E6%9C%80%E5%88%9D%E3%81%AB%E3%82%84%E3%82%8B%E3%81%93%E3%81%A8)
-  - [コマンドまとめ](#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%BE%E3%81%A8%E3%82%81)
-    - [backend](#backend)
-    - [frontend](#frontend)
-    - [db](#db)
-    - [ログを見たい時](#%E3%83%AD%E3%82%B0%E3%82%92%E8%A6%8B%E3%81%9F%E3%81%84%E6%99%82)
-  - [本番環境への移行](#%E6%9C%AC%E7%95%AA%E7%92%B0%E5%A2%83%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C)
-
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Meish
+
+- [最初にやること](#%E6%9C%80%E5%88%9D%E3%81%AB%E3%82%84%E3%82%8B%E3%81%93%E3%81%A8)
+- [コマンドまとめ](#%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%BE%E3%81%A8%E3%82%81)
+  - [backend](#backend)
+  - [frontend](#frontend)
+  - [db](#db)
+  - [ログを見たい時](#%E3%83%AD%E3%82%B0%E3%82%92%E8%A6%8B%E3%81%9F%E3%81%84%E6%99%82)
+- [本番環境への移行](#%E6%9C%AC%E7%95%AA%E7%92%B0%E5%A2%83%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C)
 
 ## 最初にやること
 
