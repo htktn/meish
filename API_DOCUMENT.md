@@ -39,6 +39,68 @@ Content-Type: application/json
 ```
 </details>
 
+### POST /cards
+
+[説明]
+
+**request**
+
+Content-Type: application/json
+
+<details><summary>body（クリックして展開）</summary>
+<br>
+ 
+```json
+{
+  "email": "hoge@example.com",
+  "phone_number": 00000000000,
+  "role": "ホゲホゲ大学大学院一年",
+  "address": "ホゲホゲホゲ",
+  "url": "https://github.com/tsmrkk/meish/edit/master/API_DOCUMENT.md",
+  "user_id": 12
+}
+```
+
+</details>
+
+**response**
+
+Content-Type: application/json
+
+成功した時：status 200 OK
+失敗した時：status 400 BAD REQUEST
+
+### PUT /cards
+
+[説明]
+
+**request**
+
+Content-Type: application/json
+
+<details><summary>body（クリックして展開）</summary>
+<br>
+ 
+```json
+{
+  "id": 1,
+  "email": "hoge@example.com",
+  "phone_number": 00000000000,
+  "role": "ホゲホゲ大学大学院一年",
+  "address": "ホゲホゲホゲ",
+  "url": "https://github.com/tsmrkk/meish/edit/master/API_DOCUMENT.md",
+  "user_id": 12
+}
+```
+
+</details>
+
+**response**
+
+Content-Type: application/json
+
+status 200 OK
+
 ### GET /themes
 
 テーマ一覧を取得する。
