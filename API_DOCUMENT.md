@@ -68,6 +68,7 @@ Content-Type: application/json
 Content-Type: application/json
 
 成功した時：status 200 OK
+
 失敗した時：status 400 BAD REQUEST
 
 ### PUT /cards
@@ -99,7 +100,7 @@ Content-Type: application/json
 
 Content-Type: application/json
 
-status 200 OK
+成功した時：status 200 OK
 
 ### GET /themes
 
