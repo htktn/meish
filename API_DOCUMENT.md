@@ -9,41 +9,6 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## テンプレート
-
-### GET /hoge
-
-[説明]
-
-**request**
-
-Content-Type: application/json
-
-<details><summary>body（クリックして展開）</summary>
-<br>
- 
-```json
-{
-  "hoge": 1
-}
-```
-
-</details>
-
-**response**
-
-Content-Type: application/json
-
-<details><summary>body（クリックして展開）</summary>
-<br>  
-
-```json
-{
-  "hoge": 1
-}
-```
-</details>
-
 ## API一覧
 
 ### GET /cards
@@ -92,6 +57,41 @@ Content-Type: application/json
       "id": 1
     }
   ]
+}
+```
+</details>
+
+## テンプレート
+
+### GET /hoge
+
+[説明]
+
+**request**
+
+Content-Type: application/json
+
+<details><summary>body（クリックして展開）</summary>
+<br>
+ 
+```json
+{
+  "hoge": 1
+}
+```
+
+</details>
+
+**response**
+
+Content-Type: application/json
+
+<details><summary>body（クリックして展開）</summary>
+<br>  
+
+```json
+{
+  "hoge": 1
 }
 ```
 </details>
