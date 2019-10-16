@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ### POST /cards
 
-[説明]
+カードを作成する。
 
 **request**
 
@@ -73,7 +73,7 @@ Content-Type: application/json
 
 ### PUT /cards
 
-[説明]
+カードの情報を更新する。
 
 **request**
 
