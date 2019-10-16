@@ -3,6 +3,7 @@
 
 - [API一覧](#api%E4%B8%80%E8%A6%A7)
   - [GET /cards](#get-cards)
+  - [GET /themes](#get-themes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
