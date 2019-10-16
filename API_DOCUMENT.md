@@ -49,6 +49,7 @@ Content-Type: application/json
 {
   "cards": [
     {
+      "id": 1,
       "email": "hoge@example.com",
       "phone_number": 00000000000,
       "role": "ホゲホゲ大学大学院一年",
@@ -59,3 +60,23 @@ Content-Type: application/json
   ]
 }
 ```
+
+### GET /themes
+
+[説明]
+
+
+**response**
+
+Content-Type: application/json
+
+<details><summary>body（クリックして展開）</summary>
+
+```json
+{
+  "themes": [
+    "id": 1
+  ]
+}
+```
+</details>
