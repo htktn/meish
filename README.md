@@ -14,7 +14,7 @@
 
 APIのdocumentはここ
 
-https://github.com/tsmrkk/meish/blob/master/API_DOCUMENT.md#get-themes
+https://github.com/tsmrkk/meish/blob/master/API_DOCUMENT.md
 
 ## 最初にやること
 
