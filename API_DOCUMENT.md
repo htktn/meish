@@ -32,11 +32,8 @@ body
   "cards": [
     {
       "id": 1,
-      "email": "hoge@example.com",
-      "phone_number": 00000000000,
-      "role": "ホゲホゲ大学大学院一年",
-      "address": "ホゲホゲホゲ",
-      "url": "https://github.com/tsmrkk/meish/edit/master/API_DOCUMENT.md",
+      "name": "hoge太郎",
+      "informations"
       "user_id": 12
     }
   ]
