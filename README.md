@@ -12,7 +12,7 @@
 - [本番環境への移行](#%E6%9C%AC%E7%95%AA%E7%92%B0%E5%A2%83%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C)
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-APIのdocumentはここ
+**APIのdocumentはここ**
 
 https://github.com/tsmrkk/meish/blob/master/API_DOCUMENT.md
 
