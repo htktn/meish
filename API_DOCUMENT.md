@@ -12,6 +12,7 @@
   - [GET /themes](#get-themes)
 - [テンプレート](#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88)
   - [GET /hoge](#get-hoge)
+- [APIのmock](#api%E3%81%AEmock)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -178,17 +179,6 @@ body
 }
 ```
 
-## APIのmock
-
-```sh
-$ make back/mock # mockサーバー起動　常時必要なわけではなさそうなので、必要な時だけ起動してください
-```
-
-下記のURLでmockの一覧が見られます。
-http://localhost:3003/ 
-
-mockを追加したい時は、[こちらのリンク](https://qiita.com/Lurium/items/313f8f770a710b5ed188)を参考にしてback/mock.jsonに必要なjsonを追加してください。
-
 ## テンプレート
 
 ### GET /hoge
@@ -218,3 +208,15 @@ body
   "hoge": 1
 }
 ```
+
+## APIのmock
+
+```sh
+$ make back/mock # mockサーバー起動　常時必要なわけではなさそうなので、必要な時だけ起動してください
+```
+
+下記のURLでmockの一覧が見られます。
+
+http://localhost:3003/ 
+
+mockを追加したい時は、[こちらのリンク](https://qiita.com/Lurium/items/313f8f770a710b5ed188)を参考にしてback/mock.jsonに必要なjsonを追加してください。
