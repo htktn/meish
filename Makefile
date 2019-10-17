@@ -34,6 +34,9 @@ back/install:
 back/gemlist:
 	@$(FIG) run back bundle exec gem list
 
+back/mock:
+	npx json-server back/mock.json -p 3003
+
 migrate/up:
 	@$(FIG) run back bundle exec rails db:migrate
 

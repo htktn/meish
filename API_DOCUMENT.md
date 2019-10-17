@@ -181,6 +181,17 @@ body
 }
 ```
 
+## APIのmock
+
+```sh
+$ make back/mock # mockサーバー起動　常時必要なわけではなさそうなので、必要な時だけ起動してください
+```
+
+下記のURLでmockの一覧が見られます。
+http://localhost:3003/ 
+
+mockを追加したい時は、[こちらのリンク](https://qiita.com/Lurium/items/313f8f770a710b5ed188)を参考にしてback/mock.jsonに必要なjsonを追加してください。
+
 ## テンプレート
 
 ### GET /hoge
