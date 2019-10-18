@@ -1,13 +1,14 @@
 import React from "react";
+import { withStyles } from '@material-ui/core';
 // import { Redirect } from "react-router-dom";
 // import background from "../../static/background.png";
 
-// @withStyles(theme => ({
-//   container: {
-//     background: 'red',
-//   },
-// }))
-export default class New extends React.Component {
+@withStyles(theme => ({
+  container: {
+    background: 'red',
+  },
+}))
+class New extends React.Component {
   // constructor(props) {
   //   super(props);
   // }
@@ -27,3 +28,4 @@ export default class New extends React.Component {
     );
   }
 }
+export default New

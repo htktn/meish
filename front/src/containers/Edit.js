@@ -1,4 +1,5 @@
 import React from "react";
+import { withStyles } from '@material-ui/core';
 // import { Redirect } from "react-router-dom";
 // import background from "../../static/background.png";
 
@@ -7,7 +8,7 @@ import React from "react";
     background: 'red',
   },
 }))
-export default class Edit extends React.Component {
+class Edit extends React.Component {
   // constructor(props) {
   //   super(props);
   // }
@@ -27,3 +28,5 @@ export default class Edit extends React.Component {
     );
   }
 }
+
+export default Edit
