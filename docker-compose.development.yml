@@ -28,7 +28,7 @@ services:
     container_name: meish_front
     environment:
       - NODE_ENV=production
-    command: npm start
+    command: [npm, run, start]
     ports:
       - 8080:3000
     volumes:
