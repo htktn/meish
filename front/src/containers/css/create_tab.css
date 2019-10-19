@@ -1,0 +1,121 @@
+/* カード作成時のタブのCSS */
+
+/* タブ：プロフィール入力画面 */
+.tab_info {
+  width: 100%;
+  background: #585858;
+  padding: 16px 25px 50px;
+  box-sizing: border-box;
+}
+
+.tab_info .message {
+  display: block;
+  background: #686868;
+  border-radius: 4px;
+  padding: 8px 0;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.03em;
+}
+
+.tab_info .label {
+  background: #C4C4C4;
+  color: white;
+  padding: 4px 13px;
+  margin-left: 5px;
+  margin-top: 24px;
+  display: inline-block;
+  border-radius: 10px 10px 0px 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.03em;
+}
+
+.tab_info .label.complete {
+  background: #0FA369;
+}
+
+.tab_info input {
+  width: 100%;
+  background: #F3F3F3;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: none;
+}
+
+.tab_info .explain {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.03em;
+  color: #C4C4C4;
+  margin: 3px 0px 0px 5px;
+}
+
+
+/* タブ：テーマ選択画面 */
+.tab_theme {
+  width: 100%;
+  margin: 0;
+  padding: 20px 0;
+  background: #585858;
+}
+
+.tab_theme .theme_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab_theme .theme_list .theme {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.tab_theme .theme_list .theme.select img{
+  border: 3px solid #0FA369;
+  box-sizing: border-box;
+}
+
+.tab_theme .theme_list .theme img {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.tab_theme .theme_list .theme span {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+
+.info-menu {
+  display: flex;
+}
+
+.info-menu .type-select {
+  border-radius: 4px 0px 0px 4px;
+  background: #F3F3F3;
+  border: none;
+  max-width: 50px;
+}
+
+.info-menu .content {
+  border-radius: 0px 4px 4px 0px;
+}
