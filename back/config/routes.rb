@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   resources :cards
   resources :other_cards, only: [:index, :show]
+  resources :types, only: [:index]
+  resources :themes, only: [:index]
 end
