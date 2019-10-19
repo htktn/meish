@@ -76,3 +76,8 @@
 .meish-body span[type="address"]:before {
   content:"〒: ";
 }
+
+/* テーマによるフォントカラーの変更 */
+.meish-body[theme="2"],.meish-body[theme="3"],.meish-body[theme="5"],.meish-body[theme="9"],.meish-body[theme="12"],.meish-body[theme="15"],.meish-body[theme="17"],.meish-body[theme="19"] {
+  color: white;
+}
