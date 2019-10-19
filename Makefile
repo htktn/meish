@@ -18,6 +18,7 @@ clean:
 	@docker volume prune
 
 setup:
+	cp back/.env.sample back/.env
 	@$(FIG) run back bundle install
 	@$(FIG) run back bundle exec rails db:create
 	@$(FIG) run back bundle exec rails db:migrate
