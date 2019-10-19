@@ -1,5 +1,7 @@
 import React from "react";
 import { withStyles } from '@material-ui/core';
+import QRCode from "qrcode.react"
+import Card from '../components/Card'
 // import { Redirect } from "react-router-dom";
 // import background from "../../static/background.png";
 
@@ -19,11 +21,13 @@ class Complete extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, url } = this.props;
     // const { redirect } = this.state;
     return (
       <div className={classes.container}>
         <h1 onClick={this.onClick}>Complete Page</h1>
+        <Card />
+        <QRCode value="https://google.com" />
       </div>
     );
   }
