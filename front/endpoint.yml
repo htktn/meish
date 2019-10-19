@@ -1,0 +1,9 @@
+default: &default
+  
+development: 'http://localhost:3000'
+
+test:
+  <<: *default
+
+production:
+  <<: *default
