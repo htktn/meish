@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Card from '../components/Card';
+// import { allGuilts, createWarning } from '../api';
 
 import "./css/header.css";
 import "./css/create_tab.css";
@@ -27,11 +28,24 @@ class New extends React.Component {
     super(props);
     this.state = {
       tabIndex: 0
+      // infoArray: [
+      //   {'email': ''},
+      //   {'tel': ''},
+      //   {'address': ''},
+      // ]
     }
   }
 
+  // handleTextChange = () => {
+  // }
+
+  onChange = (e, stateName) => {
+    const text = e.target.value.trim();
+    this.setState({ [stateName]: text });
+  };
+
   //TODO APIが完成したらつなぎ合わせる作業
-  submit = () => {
+  onSubmit = () => {
     const data = this.state
   }
 
@@ -39,10 +53,13 @@ class New extends React.Component {
     this.setState({ tabIndex: val === 0 ? 1 : 0})
   }
 
+  onKeyToggle = () => {
+  }
+
   //TODO 入力フォームに入力されたものはonChangeでsetするようにして、最終的にsubmitの中で、stateの中身を送信するようにする
   render() {
     const { classes } = this.props;
-    const { tabIndex } = this.state;
+    const { tabIndex, name, kana, role, infoArray } = this.state;
     // const { redirect } = this.state;
     return (
       <div className={classes.container}>
@@ -52,15 +69,15 @@ class New extends React.Component {
         </div>
         <div className="subHeader">
           <p className="themeTitle">シンプル1</p>
-          <span className="completeBtn">完了</span>
+          <span className="completeBtn" onClick={this.onSubmit}>完了</span>
         </div>
         <div className={classes.cardWrapper}>
-          <Card />
+          <Card name={name} kana={kana} role={role} />
         </div>
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
         {tabIndex === 0 ?
-          <TabForm1/> :
-          <TabForm2/>
+          <TabForm1 onChange={this.onChange} name={name} kana={kana} role={role} /> :
+          <TabForm2 />
         }
       </div>
     );
@@ -93,23 +110,25 @@ const TabHeader = withStyles((theme) => ({
   )
 })
 
+//TODO placeholderをつけたい
 const TabForm1= withStyles((theme) => ({
 }))((props) => {
+  const { onChange, name, kana, role, infoArray } = props;
   return (
     <div className="tab_info">
       <span className="message">入力したプロフィールは名刺にすぐに反映されるよ</span>
       <form>
         <span className="label complete">名前</span>
-        <input type="text" value="山田太郎" />
+        <input type="text" onChange={e => onChange(e, 'name')}/>
         <span className="label complete">名前の読み方</span>
-        <input type="text" value="やまだたろう" />
+        <input type="text" onChange={e => onChange(e, 'kana')}/>
         <span className="label">名前下小文字</span>
         <span className="explain">役職・所属など(例：株式会社トマト 事務)</span>
-        <input type="text" value="株式会社ハック サーバーエンジニア" />
+        <input type="text" onChange={e => onChange(e, 'role')}/>
         <span className="label">1|通常文</span>
         <span className="explain">郵便番号・住所・電話番号など</span>
         <div className="info-menu">
-          <select className="type-select">
+          <select className="type-select" value='phone'>
             <option value="email">email</option>
             <option value="phone">Tel</option>
             <option value="address">〒</option>
