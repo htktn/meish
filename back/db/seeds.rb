@@ -6,5 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Service.create(provider: 'twitter')
-Service.create(provider: 'facebook')
+services = ['twitter', 'facebook']
+services.each{|service| Service.create(provider: service)}
+
+types = ['email', 'phone_number', 'address']
+types.each{|type| Type.create(name: type)}
