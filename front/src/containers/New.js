@@ -50,9 +50,6 @@ class New extends React.Component {
     }).catch(err => console.log(err))
   }
 
-  // handleTextChange = () => {
-  // }
-
   onChange = (e, stateName) => {
     const text = e.target.value.trim();
     this.setState({ [stateName]: text });
@@ -110,7 +107,6 @@ class New extends React.Component {
   render() {
     const { classes } = this.props;
     const { tabIndex, name, kana, role, infoArray } = this.state;
-    console.log('########################################')
     // const { redirect } = this.state;
     return (
       <div className={classes.container}>
