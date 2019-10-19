@@ -1,0 +1,62 @@
+
+.complete-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 30px;
+  background: #000000;
+}
+
+.complete-container .qr-body {
+  margin: -80px 55px 30px;
+  padding: 20px;
+  background: white;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.complete-container .qr-body .title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.03em;
+  color: #000000;
+  padding: 50px 0 10px;
+}
+
+.complete-container .qr-body canvas {
+  width: 100%;
+}
+
+.complete-container .zindex {
+  z-index: 1０0;
+}
+
+.complete-container .qr-share {
+  width: 100%;
+  margin: 0;
+  display: flex;
+}
+
+.complete-container .qr-share .qr-share-body {
+  width: 50%;
+  margin-top: 20px;
+}
+
+.complete-container .qr-share .qr-share-body img {
+  width: 30px;
+  padding: 10px 0;
+}
+
+.complete-container .qr-share .qr-share-body span {
+  display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.03em;
+  color: #000000;
+}
