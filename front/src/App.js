@@ -15,11 +15,11 @@ export default class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={Index} />
-            <Route path="/card/new" component={New} />
-            <Route path="/card/:id" component={Show} />
-            <Route path="/card/:id/edit" component={Edit} />
-            <Route path="/card/complete" component={Complete} />
+            <Route exact path="/cards" component={Index} />
+            <Route path="/cards/new" component={New} />
+            <Route path="/cards/:id" component={Show} />
+            <Route path="/cards/:id/edit" component={Edit} />
+            <Route path="/cards/complete" component={Complete} />
           </Switch>
         </Router>
       </div>
