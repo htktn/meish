@@ -25,11 +25,11 @@ const SignedInShow = withStyles((theme) => ({
         </div>
         <div className="qr-share">
           <div className="qr-share-body">
-            <img src={`${process.env.PUBLIC_URL}/icon/link-w.png`} />
+            <img src={`${process.env.PUBLIC_URL}/icon/link-w.png`} alt="リンクをコピー" />
             <span>リンクをコピー</span>
           </div>
           <div className="qr-share-body">
-            <img src={`${process.env.PUBLIC_URL}/icon/share-w.png`} />
+            <img src={`${process.env.PUBLIC_URL}/icon/share-w.png`} alt="その他で共有" />
             <span>その他で共有</span>
           </div>
         </div>
