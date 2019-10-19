@@ -27,14 +27,15 @@ class CardsController < ApplicationController
   def create
     card = Card.new(card_params)
     card.user = current_user
+    return render status: 404, json: { status: 404, message: 'Failed to create' } if !card.save
 
     card_informations = information_params.map{|info| CardInformation.new(info)}
 
-    card.save
     card_informations.each do |card_info|
       card_info.card_id = card.id
-      card_info.save
+      CardInformation.transaction { card_info.save }
     end
+
     render :json => card.to_json
   end
 
