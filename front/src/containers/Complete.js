@@ -28,7 +28,7 @@ class Complete extends React.Component {
   }
 
   render() {
-    const { classes, url } = this.props;
+    // const { classes, url } = this.props;
     // const { redirect } = this.state;
     return (
       <div className="complete-container">
@@ -42,11 +42,11 @@ class Complete extends React.Component {
           <QRCode value="https://google.com" />
           <div className="qr-share">
             <div className="qr-share-body">
-              <img src={`${process.env.PUBLIC_URL}/icon/link.png`} />
+              <img src={`${process.env.PUBLIC_URL}/icon/link.png`} alt="リンクをコピー" />
               <span>リンクをコピー</span>
             </div>
             <div className="qr-share-body">
-              <img src={`${process.env.PUBLIC_URL}/icon/share.png`} />
+              <img src={`${process.env.PUBLIC_URL}/icon/share.png`} alt="その他で共有" />
               <span>その他で共有</span>
             </div>
           </div>
