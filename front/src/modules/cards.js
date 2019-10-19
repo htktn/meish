@@ -1,6 +1,14 @@
 //for card new
 export const createCard = function(body) {
-  return fetch(`${process.env.BACKEND_DOMAIN}/cards`, { method: 'post', body: JSON.stringify(body) })
+  return fetch(`http://localhost:3000/cards`, {
+    credentials: 'include',
+    method: 'post', 
+    body: JSON.stringify(body),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
     .then(res => {
       if (res.ok) {
         return res.text();
@@ -92,7 +100,8 @@ export const deleteCard = function(id) {
 
 //GET /themes
 export const getThemes = function() {
-  return fetch(`${process.env.BACKEND_DOMAIN}/themes`, {
+  return fetch(`http://localhost:3000/themes`, {
+    credentials: 'include',
     method: 'get',
   }).then(res => {
     if (res.ok) {

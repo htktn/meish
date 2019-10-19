@@ -91,7 +91,7 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:name, :role, :kana, :access_token, :user_id, :theme_id)
+    params.require(:card).permit(:name, :role, :kana, :access_token, :user_id, :theme_id, informations: [:content, :type_id])
   end
 
   def information_params

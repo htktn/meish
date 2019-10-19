@@ -16,17 +16,17 @@ const Card = withStyles((theme) => ({
   },
 
 }))((props) => {
-  const {classes} = props
+  const { classes, name, kana, role, infoArray, themeId } = props
   return (
     <div className="meishi-outer">
-      <div className="meish-body" theme="2">
-        <img src={`${process.env.PUBLIC_URL}/themes/background/2_background.jpg`} />
-        <span className="kana">やまだ たろう</span>
-        <span className="name">山田太郎</span>
-        <span className="role">株式会社ハック　サーバーエンジニア</span>
-        <span className="info" info="0"><span type="address"></span> 100-1000　東京都 港区 12-3</span>
-        <span className="info" info="1"><span type="phone"></span> 090-0090-0090</span>
-        <span className="info" info="2"><span type="email"></span> yamada@hack.com</span>
+      <div className="meish-body" theme={themeId.toString()}>
+        <img src={`${process.env.PUBLIC_URL}/themes/background/${themeId}_background.jpg`} />
+        <span className="kana">{kana}</span>
+        <span className="name">{name}</span>
+        <span className="role">{role}</span>
+        {infoArray.map((info, index) => {
+          return <span className="info" info={index.toString()}><span type={info.key}></span>{info.val}</span>
+        })}
       </div>
     </div>
   )
