@@ -37,3 +37,7 @@ gem 'rack-cors'
 
 # 環境変数
 gem 'dotenv-rails'
+
+gem 'pry-rails'
+gem 'pry-byebug'
+gem 'pry-doc'
