@@ -5,11 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
-
-gem 'mysql2'
-gem 'rack-cors'
 
 gem 'puma', '~> 3.0'
 
@@ -27,3 +23,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# 認証形
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+
+# DB
+gem 'mysql2'
+
+# クロスドメイン
+gem 'rack-cors'
+
+# 環境変数
+gem 'dotenv-rails'

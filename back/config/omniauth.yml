@@ -1,0 +1,10 @@
+production: &production
+  twitter:
+    key: <%= ENV['TWITTER_KEY'] %>
+    secret: <%= ENV['TWITTER_SECRET'] %>
+
+development: &development
+  <<: *production
+  
+test:
+  <<: *development
