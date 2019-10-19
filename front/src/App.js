@@ -17,9 +17,9 @@ export default class App extends React.Component {
             <Route exact path="/" component={Lp} />
             <Route exact path="/cards" component={Index} />
             <Route path="/cards/new" component={New} />
-            <Route path="/cards/:id" component={Show} />
             <Route path="/cards/:id/edit" component={Edit} />
             <Route path="/cards/complete" component={Complete} />
+            <Route path="/cards/:id" component={Show} />
           </Switch>
         </Router>
       </div>
