@@ -37,7 +37,7 @@ module Api
         # 許可するヘッダとメソッドの種類
         resource "*",
           headers: :any,
-          methods: [:get, :post, :patch, :delete, :head, :options]
+          methods: [:get, :post, :patch, :delete, :head, :options],
           credentials: true
       end
     end
