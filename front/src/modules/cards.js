@@ -1,6 +1,7 @@
 //for card new
 export const createCard = function(body) {
   return fetch(`http://localhost:3000/cards`, {
+    credentials: 'include',
     method: 'post', 
     body: JSON.stringify(body),
     // headers: new Headers({

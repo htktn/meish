@@ -69,18 +69,21 @@ class New extends React.Component {
       })
     })
     const body = {
-      "informations": {infos},
-      "role": {role},
-      "name": {name},
-      "kana": {kana},
-      "theme_id": 1,
-      "user_id": 1,
-      "access_token": "1:fs2RXtMDbLyT7yeaC-ym"
+      "card": {
+        "informations": infos,
+        "role": role,
+        "name": name,
+        "kana": kana,
+        "theme_id": 1,
+      }
     }
+    console.log('##############################')
+    console.log(body)
+    console.log('##############################')
     createCard(body).then(result => {
-      console.log('###################################')
-      console.log(result)
-      console.log('###################################')
+      // console.log('###################################')
+      // console.log(result)
+      // console.log('###################################')
       this.setState({themes: result})
     }).catch(err => console.log(err))
   }
