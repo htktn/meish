@@ -16,7 +16,6 @@ const Card = withStyles((theme) => ({
   },
 
 }))((props) => {
-<<<<<<< HEAD
   const { classes, name, kana, role, infoArray } = props
   return (
     <div className="meishi-outer">
