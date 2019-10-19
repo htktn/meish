@@ -9,7 +9,7 @@
 
 .complete-container .qr-body {
   margin: -80px 55px 30px;
-  padding: 20px;
+  padding: 30px;
   background: white;
   box-sizing: border-box;
   text-align: center;
@@ -27,7 +27,8 @@
 }
 
 .complete-container .qr-body canvas {
-  width: 100%;
+  width: 100%!important;
+  height: auto!important;
 }
 
 .complete-container .zindex {
