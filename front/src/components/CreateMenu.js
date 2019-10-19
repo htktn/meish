@@ -10,7 +10,7 @@ const CreateMenu = withStyles((theme) => ({
     background: 'linear-gradient(180deg, rgba(95, 95, 95, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%)',
     position: 'fixed',
     top: '0',
-    left: '0'
+    left: '0',
   },
   createNewBtn: {
     position: 'absolute',
