@@ -8,7 +8,7 @@ import "../containers/css/signedinshow.css";
 const SignedInShow = withStyles((theme) => ({
 
 }))((props) => {
-  const {classes, onClick} = props
+  // const {classes, onClick} = props
   return (
     <div className="sinshow-container">
       <div className="header" type="complete">
@@ -16,7 +16,7 @@ const SignedInShow = withStyles((theme) => ({
           <p className="logo">meish</p>
         </div>
         <div class="card">
-          <img class="setting" src={`${process.env.PUBLIC_URL}/icon/setting.png`} />
+          <img class="setting" src={`${process.env.PUBLIC_URL}/icon/setting.png`} alt="設定" />
           <Card />
         </div>
         <p className="title">QRコードで共有</p>
