@@ -12,7 +12,7 @@ import "./css/create_tab.css";
 // import { Redirect } from "react-router-dom";
 // import background from "../../static/background.png";
 
-//TODO ulとかliに直せるところは直していってほしい
+//TODO 後でwithStylesが必要ないものは外す
 @withStyles(theme => ({
   container: {
     background: 'linear-gradient(221.89deg, #C3C3C3 0%, rgba(162, 162, 162, 0.3) 100%)',
@@ -94,9 +94,7 @@ const TabHeader = withStyles((theme) => ({
 })
 
 const TabForm1= withStyles((theme) => ({
-  
 }))((props) => {
-  const {classes} = props
   return (
     <div className="tab_info">
       <span className="message">入力したプロフィールは名刺にすぐに反映されるよ</span>
@@ -144,7 +142,6 @@ const TabForm1= withStyles((theme) => ({
 })
 
 const TabForm2= withStyles((theme) => ({
-
 }))((props) => {
   const {classes} = props
   return (
