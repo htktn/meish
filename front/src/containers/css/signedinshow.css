@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* サインイン済名刺固有ページ */
+
+.sinshow-container {
+  width: 100%;
+  margin: 0;
+  background: linear-gradient(219.11deg, rgba(0, 0, 0, 0.7) 0%, #000000 42.95%, rgba(0, 0, 0, 0.8) 99.36%);
+}
+
+.sinshow-container .title {
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+
+.sinshow-container .card {
+  display: inline-block;
+  position: relative;
+}
+
+.sinshow-container .setting {
+  position: absolute;
+  width: 50px;
+  z-index: 1;
+  top: -2px;
+  right: 10px;
+}
+
+.sinshow-container .qr-body {
+  margin: 0px 56px;
+  background: white;
+  padding: 30px;
+}
+
+.sinshow-container .qr-body canvas {
+  width: 100%!important;
+  height: auto!important;
+}
+
+.sinshow-container .qr-share {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.sinshow-container .qr-share .qr-share-body {
+  width: 30%;
+  margin: 20px 0;
+}
+
+.sinshow-container .qr-share .qr-share-body img {
+  width: 30px;
+  padding: 10px 0;
+}
+
+.sinshow-container .qr-share .qr-share-body span {
+  display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.03em;
+  color: white;
+}
+
+.sinshow-container .delete {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.03em;
+  color: #D6D6D6;
+  text-align: center;
+  padding: 10px 0 30px;
+}
