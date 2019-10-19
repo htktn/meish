@@ -1,6 +1,14 @@
 //for card new
 export const createCard = function(body) {
-  return fetch(`${process.env.BACKEND_DOMAIN}/cards`, { method: 'post', body: JSON.stringify(body) })
+  return fetch(`http://localhost:3000/cards`, {
+    method: 'post', 
+    body: JSON.stringify(body),
+    // headers: new Headers({
+    //   // Authorization: `Bearer 1:fs2RXtMDbLyT7yeaC-ym`,
+    //   user_id: 1,
+    //   access_token: '1:fs2RXtMDbLyT7yeaC-ym'
+    // }),
+  })
     .then(res => {
       if (res.ok) {
         return res.text();
