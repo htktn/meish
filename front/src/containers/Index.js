@@ -40,10 +40,16 @@ import CreateMenu from '../components/CreateMenu';
     left: '50%',
     zIndex: '1',
     transform: 'translateX(-50%)',
-    ':hover': {
+    transition: 'all 300ms ease-out',
+    ':*': {
       background: '!#FFFFFF'
     }
   },
+  active: {
+    transform: 'scale(0.8) translateX(-35px) rotateZ(45deg)',
+    background: '#FFFFFF',
+
+  }
 }))
 class Index extends React.Component {
   constructor(props) {
@@ -77,8 +83,8 @@ class Index extends React.Component {
             <p className={classes.logo}>meish</p>
             <h1 className={classes.title}>名刺一覧</h1>
             <Guidance />
-            <Fab color="primary" aria-label="add" className={classes.addButton}>
-              <AddIcon onClick={this.onClick} />
+            <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton} onClick={this.onClick}>
+              <AddIcon />
             </Fab>
           </div>
           : 
@@ -86,8 +92,8 @@ class Index extends React.Component {
           <p className={classes.logo}>meish</p>
           <h1 className={classes.title}>名刺一覧</h1>
           <Guidance />
-          <Fab color="primary" aria-label="add" className={classes.addButton}>
-            <AddIcon onClick={this.onClick} />
+          <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
+            <AddIcon />
           </Fab>
           <CreateMenu onRedirect={this.onRedirect}/>
         </div>
