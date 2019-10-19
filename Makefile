@@ -39,6 +39,9 @@ back/gemlist:
 back/mock:
 	npx json-server back/mock.json -p 3003
 
+back/env:
+	cp back/.env.sample back/.env
+
 migrate/up:
 	@$(FIG) run back bundle exec rails db:migrate
 
