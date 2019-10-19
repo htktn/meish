@@ -1,0 +1,56 @@
+/* LP専用CSS */
+.lp-comntainer {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.lp-comntainer img {
+  width: 101%;
+}
+
+.lp-comntainer .sec01 {
+  position: relative;
+  margin: 0;
+}
+
+.lp-comntainer .sec01 .login-btn01 {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+  z-index: 1;
+}
+
+.lp-comntainer .sec02 {
+  background: linear-gradient(0deg, #232323 53.12%, #020202 100%);
+  margin: 0;
+  margin-top: -10px;
+  padding: 20px;
+}
+
+.lp-comntainer .sec02 .image1 {
+  position: relative; 
+  top: -40px;
+}
+
+.lp-comntainer .sec03 {
+  background: #000000;
+  margin: 0;
+  position: relative;
+}
+
+.lp-comntainer .sec03 img{
+  padding-top: 50px;
+  top: 5px;
+  position: relative;
+}
+
+.lp-comntainer .sec03 .login-btn02 {
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+}
