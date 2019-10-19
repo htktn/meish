@@ -2,11 +2,12 @@ import React from "react";
 import { withStyles } from '@material-ui/core';
 // import { Redirect } from "react-router-dom";
 // import background from "../../static/background.png";
+import SignedInShow from '../components/SignedInShow';
 
 @withStyles(theme => ({
-  container: {
-    background: 'red',
-  },
+  // container: {
+  //   background: 'red',
+  // },
 }))
 class Show extends React.Component {
   // constructor(props) {
@@ -22,9 +23,7 @@ class Show extends React.Component {
     const { classes } = this.props;
     // const { redirect } = this.state;
     return (
-      <div className={classes.container}>
-        <h1 onClick={this.onClick}>Show Page</h1>
-      </div>
+      <SignedInShow onClick={this.onClick} />
     );
   }
 }
