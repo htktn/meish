@@ -1,6 +1,6 @@
 //for card new
 export const createCard = function(body) {
-  return fetch('localhost:3000/cards', { method: 'post', body: JSON.stringify(body) })
+  return fetch(`${process.env.BACKEND_DOMAIN}/cards`, { method: 'post', body: JSON.stringify(body) })
     .then(res => {
       if (res.ok) {
         return res.text();
@@ -15,7 +15,7 @@ export const createCard = function(body) {
 
 //for card show
 export const getCard = function(id) {
-  return fetch(`localhost:3000/cards/${id}`, {
+  return fetch(`${process.env.BACKEND_DOMAIN}/cards/${id}`, {
     method: 'get',
   }).then(res => {
     if (res.ok) {
@@ -28,7 +28,7 @@ export const getCard = function(id) {
 
 //for user card show. 他の人のカードのshow
 export const getUserCard = function(id) {
-  return fetch(`localhost:3000/other_cards/${id}`, {
+  return fetch(`${process.env.BACKEND_DOMAIN}/other_cards/${id}`, {
     method: 'get',
   }).then(res => {
     if (res.ok) {
@@ -41,7 +41,7 @@ export const getUserCard = function(id) {
 
 //for card index 
 export const getAllCards = function() {
-  return fetch('localhost:3000/cards', {
+  return fetch(`${process.env.BACKEND_DOMAIN}/cards`, {
     method: 'get',
   }).then(res => {
     if (res.ok) {
@@ -54,7 +54,7 @@ export const getAllCards = function() {
 
 //for user card index. ユーザーが交換したカード一覧用
 export const getAllUserCards = function() {
-  return fetch('localhost:3000/other_cards', {
+  return fetch(`${process.env.BACKEND_DOMAIN}/other_cards`, {
     method: 'get',
   }).then(res => {
     if (res.ok) {
@@ -67,7 +67,7 @@ export const getAllUserCards = function() {
 
 //PUT /cards/:id
 export const updateCard = function(id, body) {
-  return fetch(`localhost:3000/cards/${id}`, { method: 'put', body: JSON.stringify(body) })
+  return fetch(`${process.env.BACKEND_DOMAIN}/cards/${id}`, { method: 'put', body: JSON.stringify(body) })
   .then(res => {
     if (res.ok) {
       return res.json();
@@ -79,7 +79,7 @@ export const updateCard = function(id, body) {
 
 //DELETE /cards/:id
 export const deleteCard = function(id) {
-  return fetch(`localhost:3000/cards/${id}`, {
+  return fetch(`${process.env.BACKEND_DOMAIN}/cards/${id}`, {
     method: 'delete',
   }).then(res => {
     if (res.ok) {
@@ -92,7 +92,7 @@ export const deleteCard = function(id) {
 
 //GET /themes
 export const getThemes = function() {
-  return fetch('localhost:3000/themes', {
+  return fetch(`${process.env.BACKEND_DOMAIN}/themes`, {
     method: 'get',
   }).then(res => {
     if (res.ok) {
@@ -105,7 +105,7 @@ export const getThemes = function() {
 
 //GET /types
 export const getTypes = function() {
-  return fetch('localhost:3000/types', {
+  return fetch(`${process.env.BACKEND_DOMAIN}/types`, {
     method: 'get',
   }).then(res => {
     if (res.ok) {
