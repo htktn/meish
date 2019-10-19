@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core';
 // import { Redirect } from "react-router-dom";
 // import background from "../../static/background.png";
 import SignedInShow from '../components/SignedInShow';
+import NormalShow from '../components/NormalShow';
 
 @withStyles(theme => ({
   // container: {
@@ -23,7 +24,8 @@ class Show extends React.Component {
     const { classes } = this.props;
     // const { redirect } = this.state;
     return (
-      <SignedInShow onClick={this.onClick} />
+      // <SignedInShow onClick={this.onClick} />
+      <NormalShow onClick={this.onClick} />
     );
   }
 }

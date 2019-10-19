@@ -1,0 +1,55 @@
+
+.normalshow-container {
+  width: 100%;
+  background: linear-gradient(223.89deg, rgba(0, 0, 0, 0.7) 0%, #000000 42.95%, rgba(0, 0, 0, 0.8) 99.36%);
+}
+
+.normalshow-container .message {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 19px;
+  letter-spacing: 0.17em;
+  color: #FFFFFF;
+  padding: 20px 70px;
+}
+
+.normalshow-container .login-btn01 {
+  width: 210px;
+  margin: 0 auto;
+  display: block;
+}
+
+.normalshow-container .sec01 {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.normalshow-container .sec02 {
+  width: 100%;
+  position: relative;
+}
+
+.normalshow-container .sec02 img {
+  width: 100%;
+}
+
+.normalshow-container .sec02 .login-btn02 {
+  position: absolute;
+  width: 210px;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.normalshow-container .sec03 {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 83px;
+}
+
+.normalshow-container .sec03 img {
+  width: 51px;
+  margin-top: 23px;
+}
