@@ -65,26 +65,13 @@ body
 
 ```json
 {
-  "informations": [
-    {
-      content: '08047338027', 
-      type: 'phone_number'
-    }, 
-    {
-      content: 'koki827tt@gmail.com  ', 
-      type: 'phone_number'
-    },
-    {
-      content: '川口市川口', 
-      type: 'address'
-    },
-  ],
+  "id": 1,
+  "email": "hoge@example.com",
+  "phone_number": 00000000000,
   "role": "ホゲホゲ大学大学院一年",
-  "name": "津村光輝",
-  "kana": "つむらこうき",
-  "theme_id": 1,
-  "user_id": 12,
-  "access_token": "fdsafjklsafjsaklj"
+  "address": "ホゲホゲホゲ",
+  "url": "https://github.com/tsmrkk/meish/edit/master/API_DOCUMENT.md",
+  "user_id": 12
 }
 ```
 
@@ -100,12 +87,26 @@ body
  
 ```json
 {
-  "email": "hoge@example.com",
-  "phone_number": 00000000000,
+  "informations": [
+    {
+      "content": "08047338027",
+      "type":"phone_number"
+    }, 
+    {
+      "content": "koki827tt@gmail.com",
+      "type": "email"
+    },
+    {
+      "content": "川口",
+      "type": "address"
+    }
+  ],
   "role": "ホゲホゲ大学大学院一年",
-  "address": "ホゲホゲホゲ",
-  "url": "https://github.com/tsmrkk/meish/edit/master/API_DOCUMENT.md",
-  "user_id": 12
+  "name": "津村光輝",
+  "kana": "つむらこうき",
+  "theme_id": 1,
+  "user_id": 12,
+  "access_token": "fdsafjklsafjsaklj"
 }
 ```
 
