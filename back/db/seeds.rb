@@ -11,3 +11,68 @@ services.each{|service| Service.create(provider: service)}
 
 types = ['email', 'phone_number', 'address']
 types.each{|type| Type.create(name: type)}
+
+Theme.create!(
+  [
+    {
+      name: 'しろにじ'
+    },
+    {
+      name: 'くろ'
+    },
+    {
+      name: 'あお'
+    },
+    {
+      name: 'きいろ'
+    },
+    {
+      name: 'あか'
+    },
+    {
+      name: 'みどり'
+    },
+    {
+      name: 'みずツートン'
+    },
+    {
+      name: 'しずく'
+    },
+    {
+      name: 'ビビット黒'
+    },
+    {
+      name: 'ビビット'
+    },
+    {
+      name: 'パソコン'
+    },
+    {
+      name: 'いぬ'
+    },
+    {
+      name: 'ねこ'
+    },
+    {
+      name: 'あおぞら'
+    },
+    {
+      name: 'こうもり'
+    },
+    {
+      name: 'スプラッシュ'
+    },
+    {
+      name: 'よるのほし'
+    },
+    {
+      name: 'うみべ'
+    },
+    {
+      name: 'タブ'
+    },
+    {
+      name: '宝石'
+    }
+  ]
+)
