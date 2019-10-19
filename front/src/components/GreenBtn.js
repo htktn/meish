@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from '@material-ui/core';
+import WhiteBtn from "./WhiteBtn";
 
 const GreenBtn = withStyles((theme) => ({
   btn: {
@@ -13,7 +14,8 @@ const GreenBtn = withStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: '14px',
     lineHeight: '16px',
-    letterSpacing: '0.03em'
+    letterSpacing: '0.03em',
+    color: 'white'
   }
 }))((props) => {
   const {classes} = props;
