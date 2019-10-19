@@ -92,6 +92,7 @@ export const deleteCard = function(id) {
 
 //GET /themes
 export const getThemes = function() {
+  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
   return fetch(`${process.env.BACKEND_DOMAIN}/themes`, {
     method: 'get',
   }).then(res => {

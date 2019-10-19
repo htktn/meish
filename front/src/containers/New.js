@@ -4,11 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Card from '../components/Card';
-// import { allGuilts, createWarning } from '../api';
+import { getThemes, createCard } from '../modules/cards';
 
 import "./css/header.css";
 import "./css/create_tab.css";
-// TODO selectをmaterial uiからimportするなりして、値を入力できるようにする
 
 // import { Redirect } from "react-router-dom";
 // import background from "../../static/background.png";
@@ -27,17 +26,29 @@ class New extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tabIndex: 0
-      // infoArray: [
-      //   {'email': ''},
-      //   {'tel': ''},
-      //   {'address': ''},
-      // ]
+      tabIndex: 0,
+      infoArray: [
+        {
+          'key': 'email',
+          'val': ''
+        },
+        {
+          'key': 'phone',
+          'val': ''
+        },
+        {
+          'key': 'address',
+          'val': ''
+        },
+      ]
     }
   }
 
-  // handleTextChange = () => {
-  // }
+  componentDidMount() {
+    getThemes().then(result => {
+      this.setState({themes: result})
+    })
+  }
 
   onChange = (e, stateName) => {
     const text = e.target.value.trim();
@@ -47,13 +58,30 @@ class New extends React.Component {
   //TODO APIが完成したらつなぎ合わせる作業
   onSubmit = () => {
     const data = this.state
+    // createCard().then(result => {
+    //   console.log('###################################')
+    //   console.log(result)
+    //   console.log('###################################')
+    //   this.setState({themes: result})
+    // })
   }
 
   handleTabChange = (val) => {
     this.setState({ tabIndex: val === 0 ? 1 : 0})
   }
 
-  onKeyToggle = () => {
+  onToggle = (e, index) => {
+    const text = e.target.value.trim()
+    let { infoArray } = this.state
+    infoArray[index].key = text
+    this.setState({ infoArray })
+  }
+
+  onPullTextChange = (e, index) => {
+    const text = e.target.value.trim();
+    let { infoArray } = this.state;
+    infoArray[index].val = text
+    this.setState({ infoArray })
   }
 
   //TODO 入力フォームに入力されたものはonChangeでsetするようにして、最終的にsubmitの中で、stateの中身を送信するようにする
@@ -72,11 +100,11 @@ class New extends React.Component {
           <span className="completeBtn" onClick={this.onSubmit}>完了</span>
         </div>
         <div className={classes.cardWrapper}>
-          <Card name={name} kana={kana} role={role} />
+          <Card name={name} kana={kana} role={role} infoArray={infoArray} />
         </div>
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
         {tabIndex === 0 ?
-          <TabForm1 onChange={this.onChange} name={name} kana={kana} role={role} /> :
+          <TabForm1 onToggle={this.onToggle} onChange={this.onChange} onPullTextChange={this.onPullTextChange} name={name} kana={kana} role={role} infoArray={infoArray} /> :
           <TabForm2 />
         }
       </div>
@@ -113,48 +141,34 @@ const TabHeader = withStyles((theme) => ({
 //TODO placeholderをつけたい
 const TabForm1= withStyles((theme) => ({
 }))((props) => {
-  const { onChange, name, kana, role, infoArray } = props;
+  const { onPullTextChange, onToggle, onChange, name, kana, role, infoArray } = props;
   return (
     <div className="tab_info">
       <span className="message">入力したプロフィールは名刺にすぐに反映されるよ</span>
       <form>
         <span className="label complete">名前</span>
-        <input type="text" onChange={e => onChange(e, 'name')}/>
+        <input type="text" onChange={e => onChange(e, 'name')} value={name} />
         <span className="label complete">名前の読み方</span>
-        <input type="text" onChange={e => onChange(e, 'kana')}/>
+        <input type="text" onChange={e => onChange(e, 'kana')} value={kana} />
         <span className="label">名前下小文字</span>
         <span className="explain">役職・所属など(例：株式会社トマト 事務)</span>
-        <input type="text" onChange={e => onChange(e, 'role')}/>
-        <span className="label">1|通常文</span>
-        <span className="explain">郵便番号・住所・電話番号など</span>
-        <div className="info-menu">
-          <select className="type-select" value='phone'>
-            <option value="email">email</option>
-            <option value="phone">Tel</option>
-            <option value="address">〒</option>
-          </select>
-          <input className="content" type="text" value="株式会社ハック サーバーエンジニア" />
-        </div>
-        <span className="label">2|通常文</span>
-        <span className="explain">郵便番号・住所・電話番号など</span>
-        <div className="info-menu">
-          <select className="type-select">
-            <option value="email">email</option>
-            <option value="phone">Tel</option>
-            <option value="address">〒</option>
-          </select>
-          <input className="content" type="text" value="株式会社ハック サーバーエンジニア" />
-        </div>
-        <span className="label">3|通常文</span>
-        <span className="explain">郵便番号・住所・電話番号など</span>
-        <div className="info-menu">
-          <select className="type-select">
-            <option value="email">email</option>
-            <option value="phone">Tel</option>
-            <option value="address">〒</option>
-          </select>
-          <input className="content" type="text" value="株式会社ハック サーバーエンジニア" />
-        </div>
+        <input type="text" onChange={e => onChange(e, 'role')} value={role} />
+        {infoArray.map((info, index) => {
+          return(
+            <>
+              <span className="label">{index + 1}|通常文</span>
+              <span className="explain">郵便番号・住所・電話番号など</span>
+              <div className="info-menu">
+                <select className="type-select" value={info.key} onChange={e => onToggle(e, index)}>
+                  <option value="email">email</option>
+                  <option value="phone">Tel</option>
+                  <option value="address">〒</option>
+                </select>
+                <input className="content" type="text" onChange={e => onPullTextChange(e, index)} value={info.val} />
+              </div>
+            </>
+          )
+        })}
       </form>
     </div>
   )
