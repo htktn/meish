@@ -5,12 +5,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Card from '../components/Card';
 import { getThemes, createCard } from '../modules/cards';
+import { Redirect } from "react-router-dom";
 
 import "./css/header.css";
 import "./css/create_tab.css";
 
-// import { Redirect } from "react-router-dom";
-// import background from "../../static/background.png";
 
 //TODO 後でwithStylesが必要ないものは外す
 @withStyles(theme => ({
@@ -27,6 +26,11 @@ class New extends React.Component {
     super(props);
     this.state = {
       tabIndex: 0,
+      selectedThemeId: 1,
+      redirect: false,
+      kana: '',
+      name: '',
+      role: '',
       infoArray: [
         {
           'key': 'email',
@@ -55,33 +59,28 @@ class New extends React.Component {
     this.setState({ [stateName]: text });
   };
 
-  //TODO APIが完成したらつなぎ合わせる作業
   onSubmit = () => {
-    const { name, kana, role, infoArray } = this.state;
+    const { name, kana, role, infoArray, selectedThemeId } = this.state;
     let infos = []
     infoArray.map(info => {
+      let typeId = 1
+      if (info.key === 'phone') typeId = 2
+      if (info.key === 'address') typeId = 3
       infos.push({
         "content": `${info.val}`,
-        "type_id": `${info.key}`,
+        "type_id": typeId,
       })
     })
     const body = {
-      "card": {
-        "informations": infos,
-        "role": role,
-        "name": name,
-        "kana": kana,
-        "theme_id": 1,
-      }
+      "informations": infos,
+      "role": role,
+      "name": name,
+      "kana": kana,
+      "theme_id": selectedThemeId,
     }
-    console.log('##############################')
-    console.log(body)
-    console.log('##############################')
     createCard(body).then(result => {
-      // console.log('###################################')
-      // console.log(result)
-      // console.log('###################################')
-      this.setState({themes: result})
+      this.props.history.push("/cards/new");
+      this.setState({redirect: true, createdCardId: result.id })
     }).catch(err => console.log(err))
   }
 
@@ -96,6 +95,10 @@ class New extends React.Component {
     this.setState({ infoArray })
   }
 
+  onSelectTheme = (e, id) => {
+    this.setState({selectedThemeId: id})
+  }
+
   onPullTextChange = (e, index) => {
     const text = e.target.value.trim();
     let { infoArray } = this.state;
@@ -103,13 +106,12 @@ class New extends React.Component {
     this.setState({ infoArray })
   }
 
-  //TODO 入力フォームに入力されたものはonChangeでsetするようにして、最終的にsubmitの中で、stateの中身を送信するようにする
   render() {
     const { classes } = this.props;
-    const { tabIndex, name, kana, role, infoArray } = this.state;
-    // const { redirect } = this.state;
+    const { tabIndex, name, kana, role, infoArray, themes, selectedThemeId, redirect } = this.state;
     return (
       <div className={classes.container}>
+        {redirect && (<Redirect to={{pathname: '/cards/complete', state: this.state}} />)}
         <div className="header" type="new">
           <p className="back"><span className="arrow"></span>戻る</p>
           <p className="logo">meish</p>
@@ -119,19 +121,17 @@ class New extends React.Component {
           <span className="completeBtn" onClick={this.onSubmit}>完了</span>
         </div>
         <div className={classes.cardWrapper}>
-          <Card name={name} kana={kana} role={role} infoArray={infoArray} />
+          <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
         </div>
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
         {tabIndex === 0 ?
           <TabForm1 onToggle={this.onToggle} onChange={this.onChange} onPullTextChange={this.onPullTextChange} name={name} kana={kana} role={role} infoArray={infoArray} /> :
-          <TabForm2 />
+          <TabForm2 themes={themes} selectedThemeId={selectedThemeId} onClick={this.onSelectTheme}/>
         }
       </div>
     );
   }
 }
-
-
 
 const TabHeader = withStyles((theme) => ({
   container: {
@@ -195,34 +195,18 @@ const TabForm1= withStyles((theme) => ({
 
 const TabForm2= withStyles((theme) => ({
 }))((props) => {
-  const {classes} = props
+  const { classes, themes, selectedThemeId, onClick } = props
   return (
     <div className="tab_theme">
       <div className="theme_list">
-        <div className="theme select">
-          <img src={`${process.env.PUBLIC_URL}/themes/sample/1_sample.jpg`} />
-          <span>テーマ１</span>
-        </div>
-        <div className="theme">
-          <img src={`${process.env.PUBLIC_URL}/themes/sample/2_sample.jpg`} />
-          <span>テーマ2</span>
-        </div>
-        <div className="theme">
-          <img src={`${process.env.PUBLIC_URL}/themes/sample/3_sample.jpg`} />
-          <span>テーマ3</span>
-        </div>
-        <div className="theme">
-          <img src={`${process.env.PUBLIC_URL}/themes/sample/4_sample.jpg`} />
-          <span>テーマ4</span>
-        </div>
-        <div className="theme">
-          <img src={`${process.env.PUBLIC_URL}/themes/sample/5_sample.jpg`} />
-          <span>テーマ5</span>
-        </div>
-        <div className="theme">
-          <img src={`${process.env.PUBLIC_URL}/themes/sample/6_sample.jpg`} />
-          <span>テーマ6</span>
-        </div>
+        {themes.map(theme => {
+          return (
+            <div className={['theme', selectedThemeId === theme.id ? 'select' : ''].join(' ')} onClick={(e) => onClick(e, theme.id)}>
+              <img src={`${process.env.PUBLIC_URL}/themes/sample/${theme.id}_sample.jpg`} />
+              <span>{theme.name}</span>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

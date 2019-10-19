@@ -28,18 +28,19 @@ class Complete extends React.Component {
   }
 
   render() {
-    const { classes, url } = this.props;
-    // const { redirect } = this.state;
+    const { classes, location } = this.props;
+    const state = location.state;
+    const {name, kana, role, infoArray, selectedThemeId, createdCardId } = state;
     return (
       <div className="complete-container">
         <div className="header" type="complete">
           <p className="back" onClick={this.onClick}><span className="arrow"></span>戻る</p>
           <p className="logo">meish</p>
         </div>
-        <Card />
+        <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
         <div className="qr-body">
           <p className="title">QRコードで共有</p>
-          <QRCode value="https://google.com" />
+          <QRCode value={`http://localhost:8080/cards/${createdCardId}`} />
           <div className="qr-share">
             <div className="qr-share-body">
               <img src={`${process.env.PUBLIC_URL}/icon/link.png`} />

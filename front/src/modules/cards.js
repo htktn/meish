@@ -4,11 +4,10 @@ export const createCard = function(body) {
     credentials: 'include',
     method: 'post', 
     body: JSON.stringify(body),
-    // headers: new Headers({
-    //   // Authorization: `Bearer 1:fs2RXtMDbLyT7yeaC-ym`,
-    //   user_id: 1,
-    //   access_token: '1:fs2RXtMDbLyT7yeaC-ym'
-    // }),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   })
     .then(res => {
       if (res.ok) {
@@ -101,7 +100,8 @@ export const deleteCard = function(id) {
 
 //GET /themes
 export const getThemes = function() {
-  return fetch(`${process.env.BACKEND_DOMAIN}/themes`, {
+  return fetch(`http://localhost:3000/themes`, {
+    credentials: 'include',
     method: 'get',
   }).then(res => {
     if (res.ok) {
