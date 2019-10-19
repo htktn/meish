@@ -1,0 +1,78 @@
+
+/* 名刺プレビュー */
+.meishi-outer {
+  display: inline-block;
+  padding: 15px;
+}
+
+.meish-body {
+  display: inline-block;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  transition: 1s;
+}
+
+.meish-body img{
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.meish-body span.kana {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  top: 15px;
+  left: 30px;
+}
+
+.meish-body span.name {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  top: 35px;
+  left: 30px;
+}
+
+.meish-body span.role {
+  position: absolute;
+  font-size: 10px;
+  top: 70px;
+  left: 30px;
+}
+
+.meish-body span[info="0"] {
+  position: absolute;
+  font-size: 12px;
+  top: 120px;
+  left: 30px;
+}
+
+.meish-body span[info="1"] {
+  position: absolute;
+  font-size: 12px;
+  top: 140px;
+  left: 30px;
+}
+
+.meish-body span[info="2"] {
+  position: absolute;
+  font-size: 12px;
+  top: 160px;
+  left: 30px;
+}
+
+.meish-body span[type="email"]:before {
+  content:"e-mail: ";
+}
+
+.meish-body span[type="phone"]:before {
+  content:"Tel: ";
+}
+
+.meish-body span[type="address"]:before {
+  content:"〒: ";
+}
