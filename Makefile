@@ -43,5 +43,8 @@ migrate/up:
 front/shell:
 	@$(FIG) run front /bin/sh
 
+front/install:
+	@$(FIG) run front npm install
+
 mysql:
 	docker exec -it meish_db mysql -u root -ppassword
