@@ -2,8 +2,9 @@ import React from "react";
 import { withStyles } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Guidance from '../components/Guidance';
+import CreateMenu from '../components/CreateMenu';
 
 //TODO functional componentにする
 @withStyles(theme => ({
@@ -34,6 +35,14 @@ import Guidance from '../components/Guidance';
   addButton: {
     background: '#FFFFFF',
     color: '#0FA369',
+    position: 'fixed',
+    bottom: '20px',
+    left: '50%',
+    zIndex: '1',
+    transform: 'translateX(-50%)',
+    ':hover': {
+      background: '!#FFFFFF'
+    }
   },
 }))
 class Index extends React.Component {
@@ -46,31 +55,42 @@ class Index extends React.Component {
   }
 
   onClick = () => {
-    this.setState({clicked: true})
+    this.setState({clicked: this.state.clicked ? false : true})
   }
 
   onRedirect = to => {
     //TODO historyにpushするようにしてから、引数で指定されたtoへ遷移するようにする
-    this.setState({redirect: true})
+    this.props.history.push(to);
+    this.setState({redirect: true, redirectTo: to});
   }
 
   render() {
     const { classes } = this.props;
     // const { clicked, redirect } = this.state;
-    const { clicked } = this.state;
-    //TODO 三項演算子を使ってclickedがtrueのときとそうでないときで分岐して表示できるようにする
+    const { clicked, redirect, redirectTo} = this.state;
     //TODO redirectフラグを見て、遷移するかどうか判断するようにする、遷移先をonClickのときに指定できるようにする
     return (
       <>
-        { !clicked &&
+        {redirect && <Redirect to={`/${redirectTo}`}/> }
+        { !clicked ?
           <div className={classes.container}>
             <p className={classes.logo}>meish</p>
             <h1 className={classes.title}>名刺一覧</h1>
             <Guidance />
             <Fab color="primary" aria-label="add" className={classes.addButton}>
-              <AddIcon />
+              <AddIcon onClick={this.onClick} />
             </Fab>
           </div>
+          : 
+          <div className={classes.container}>
+          <p className={classes.logo}>meish</p>
+          <h1 className={classes.title}>名刺一覧</h1>
+          <Guidance />
+          <Fab color="primary" aria-label="add" className={classes.addButton}>
+            <AddIcon onClick={this.onClick} />
+          </Fab>
+          <CreateMenu onRedirect={this.onRedirect}/>
+        </div>
         }
       </>
     );
