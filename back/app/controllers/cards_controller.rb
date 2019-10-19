@@ -16,12 +16,36 @@ class CardsController < ApplicationController
   # }
 
   def index
-    cards = current_user.cards
+    cards = current_user.cards.map do |card| 
+      {
+        id: card.id,
+        name: card.name,
+        role: card.role, 
+        informations: card.card_informations.map do |card_info| 
+          {
+            content: card_info.content, 
+            type: card_info.type
+          }
+        end
+      }
+    end
+
     render :json => cards.to_json
   end
 
   def show
-    render :json => @card.to_json
+    card = {
+      id: @card.id,
+      name: @card.name,
+      role: @card.role, 
+      informations: @card.card_informations.map do |card_info| 
+        {
+          content: card_info.content, 
+          type: card_info.type
+        }
+      end
+    }
+    render :json => card.to_json
   end
 
   def create
@@ -65,7 +89,7 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:name, :role, :kana, :access_token, :user_id, :theme_id, informations: [:content, :type])
+    params.require(:card).permit(:name, :role, :kana, :access_token, :user_id, :theme_id)
   end
 
   def information_params
@@ -77,6 +101,6 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    @card = Card.find_by(id: params[:id], user_id: User.first.id)
+    @card = Card.find_by(id: params[:id], user_id: current_user.id)
   end
 end
