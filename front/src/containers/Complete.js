@@ -22,7 +22,6 @@ class Complete extends React.Component {
   };
 
   onRedirect = to => {
-    //TODO historyにpushするようにしてから、引数で指定されたtoへ遷移するようにする
     this.props.history.push(to);
     this.setState({redirect: true, redirectTo: to});
   }
@@ -43,11 +42,11 @@ class Complete extends React.Component {
           <QRCode value={`http://localhost:8080/cards/${createdCardId}`} />
           <div className="qr-share">
             <div className="qr-share-body">
-              <img src={`${process.env.PUBLIC_URL}/icon/link.png`} />
+              <img src={`${process.env.PUBLIC_URL}/icon/link.png`} alt="リンクをコピー" />
               <span>リンクをコピー</span>
             </div>
             <div className="qr-share-body">
-              <img src={`${process.env.PUBLIC_URL}/icon/share.png`} />
+              <img src={`${process.env.PUBLIC_URL}/icon/share.png`} alt="その他で共有" />
               <span>その他で共有</span>
             </div>
           </div>

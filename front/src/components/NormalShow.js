@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from '@material-ui/core';
-import QRCode from "qrcode.react"
 import Card from './Card'
 import "../containers/css/header.css";
 import "../containers/css/normalshow.css";
@@ -19,7 +18,7 @@ const NormalShow = withStyles((theme) => ({
         <Card />
         <div className="sec01">
           <div onClick={() => this.onRedirect('/')}>
-            <GreenBtn title="画像をカメラロールに保存するする"  />
+            <GreenBtn title="画像をカメラロールに保存する"  />
           </div>
           <p class="message">ログインすると名刺の情報をもっと便利に保存できます</p>
           <a href="http://localhost:3000/user/auth/twitter/">
@@ -27,13 +26,13 @@ const NormalShow = withStyles((theme) => ({
           </a>
         </div>
         <div className="sec02">
-          <img className="image1" src={`${process.env.PUBLIC_URL}/lp/lp-show.png`} />
+          <img className="image1" src={`${process.env.PUBLIC_URL}/lp/lp-show.png`} alt="もっと早く簡単に名刺を交換できればもっと広がる" />
           <a href="http://localhost:3000/user/auth/twitter/">
             <img className="login-btn02" src={`${process.env.PUBLIC_URL}/lp/lp-login.png`} alt="ログイン" />
           </a>
         </div>
         <div className="sec03">
-          <img className="logo-mini" src={`${process.env.PUBLIC_URL}/lp/meish-mini.png`} />
+          <img className="logo-mini" src={`${process.env.PUBLIC_URL}/lp/meish-mini.png`} alt="ロゴミニ" />
         </div>
     </div>
   )

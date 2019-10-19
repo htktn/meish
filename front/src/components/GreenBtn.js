@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from '@material-ui/core';
-import WhiteBtn from "./WhiteBtn";
 
 const GreenBtn = withStyles((theme) => ({
   btn: {
