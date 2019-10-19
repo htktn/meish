@@ -3,4 +3,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: 'users/sessions'
   }
+
+  resources :cards
+  resources :other_cards, only: [:index, :show]
 end

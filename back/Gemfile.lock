@@ -42,6 +42,7 @@ GEM
     bcrypt (3.1.13)
     builder (3.2.3)
     byebug (11.0.1)
+    coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     devise (4.7.1)
@@ -88,6 +89,17 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.7.0)
+      byebug (~> 11.0)
+      pry (~> 0.10)
+    pry-doc (1.0.0)
+      pry (~> 0.11)
+      yard (~> 0.9.11)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     puma (3.12.1)
     rack (2.0.7)
     rack-cors (1.0.3)
@@ -143,6 +155,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
@@ -155,6 +168,9 @@ DEPENDENCIES
   mysql2
   omniauth
   omniauth-twitter
+  pry-byebug
+  pry-doc
+  pry-rails
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.7, >= 5.0.7.2)
