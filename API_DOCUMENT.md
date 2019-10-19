@@ -90,15 +90,15 @@ body
   "informations": [
     {
       "content": "08047338027",
-      "type":"phone_number"
+      "type_id":"phone_number"
     }, 
     {
       "content": "koki827tt@gmail.com",
-      "type": "email"
+      "type_id": "email"
     },
     {
       "content": "川口",
-      "type": "address"
+      "type_id": "address"
     }
   ],
   "role": "ホゲホゲ大学大学院一年",
