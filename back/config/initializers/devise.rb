@@ -261,7 +261,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  OAUTH_CONFIG = YAML.load_file("#{Rails.root}/config/omniauth.yml")[Rails.env].symbolize_keys!
+  OAUTH_CONFIG = YAML.load(ERB.new(IO.read("#{Rails.root}/config/omniauth.yml.erb")).result)[Rails.env].symbolize_keys!
   config.omniauth :twitter, OAUTH_CONFIG[:twitter]['key'], OAUTH_CONFIG[:twitter]['secret'], callback_url: 'http://localhost:3000/user/auth/twitter/callback'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
