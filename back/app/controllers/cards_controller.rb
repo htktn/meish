@@ -31,9 +31,11 @@ class CardsController < ApplicationController
 
     card_informations = information_params.map{|info| CardInformation.new(info)}
 
-    card_informations.each do |card_info|
-      card_info.card_id = card.id
-      CardInformation.transaction { card_info.save }
+    CardInformation.transaction do
+      card_informations.each do |card_info|
+        card_info.card_id = card.id
+        card_info.save
+      end
     end
 
     render :json => card.to_json
