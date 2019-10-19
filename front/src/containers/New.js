@@ -50,6 +50,9 @@ class New extends React.Component {
     }).catch(err => console.log(err))
   }
 
+  // handleTextChange = () => {
+  // }
+
   onChange = (e, stateName) => {
     const text = e.target.value.trim();
     this.setState({ [stateName]: text });
@@ -80,7 +83,6 @@ class New extends React.Component {
       console.log('###################################')
       this.setState({themes: result})
     }).catch(err => console.log(err))
-  }
 
   handleTabChange = (val) => {
     this.setState({ tabIndex: val === 0 ? 1 : 0})
@@ -157,6 +159,7 @@ const TabHeader = withStyles((theme) => ({
 //TODO placeholderをつけたい
 const TabForm1= withStyles((theme) => ({
 }))((props) => {
+<<<<<<< HEAD
   const { onPullTextChange, onToggle, onChange, name, kana, role, infoArray } = props;
   return (
     <div className="tab_info">
