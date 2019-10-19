@@ -22,6 +22,7 @@ setup:
 	@$(FIG) run back bundle install
 	@$(FIG) run back bundle exec rails db:create
 	@$(FIG) run back bundle exec rails db:migrate
+	@$(FIG) run back bundle exec rails db:seed
 
 back/console:
 	@$(FIG) run back bundle exec rails console
