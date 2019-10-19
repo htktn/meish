@@ -47,7 +47,7 @@ class New extends React.Component {
   componentDidMount() {
     getThemes().then(result => {
       this.setState({themes: result})
-    })
+    }).catch(err => console.log(err))
   }
 
   onChange = (e, stateName) => {
@@ -57,13 +57,29 @@ class New extends React.Component {
 
   //TODO APIが完成したらつなぎ合わせる作業
   onSubmit = () => {
-    const data = this.state
-    // createCard().then(result => {
-    //   console.log('###################################')
-    //   console.log(result)
-    //   console.log('###################################')
-    //   this.setState({themes: result})
-    // })
+    const { name, kana, role, infoArray } = this.state;
+    let infos = []
+    infoArray.map(info => {
+      infos.push({
+        "content": `${info.val}`,
+        "type_id": `${info.key}`,
+      })
+    })
+    const body = {
+      "informations": {infos},
+      "role": {role},
+      "name": {name},
+      "kana": {kana},
+      "theme_id": 1,
+      "user_id": 1,
+      "access_token": "1:fs2RXtMDbLyT7yeaC-ym"
+    }
+    createCard(body).then(result => {
+      console.log('###################################')
+      console.log(result)
+      console.log('###################################')
+      this.setState({themes: result})
+    }).catch(err => console.log(err))
   }
 
   handleTabChange = (val) => {
