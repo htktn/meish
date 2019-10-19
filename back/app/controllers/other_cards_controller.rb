@@ -10,6 +10,7 @@ class OtherCardsController < ApplicationController
         role: card.role, 
         informations: card.card_informations.map do |card_info| 
           {
+            id: card_info.id,
             content: card_info.content, 
             type: card_info.type
           }
@@ -29,6 +30,7 @@ class OtherCardsController < ApplicationController
       role: @card.role, 
       informations: @card.card_informations.map do |card_info| 
         {
+          id: card_info.id,
           content: card_info.content, 
           type: card_info.type
         }
