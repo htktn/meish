@@ -127,44 +127,44 @@ const TabForm1= withStyles((theme) => ({
   const {classes} = props
   return (
     <div className="tab_info">
-      <span class="message">入力したプロフィールは名刺にすぐに反映されるよ</span>
+      <span className="message">入力したプロフィールは名刺にすぐに反映されるよ</span>
       <form>
-        <span class="label complete">名前</span>
+        <span className="label complete">名前</span>
         <input type="text" value="山田太郎" />
-        <span class="label complete">名前の読み方</span>
+        <span className="label complete">名前の読み方</span>
         <input type="text" value="やまだたろう" />
-        <span class="label">名前下小文字</span>
-        <span class="explain">役職・所属など(例：株式会社トマト 事務)</span>
+        <span className="label">名前下小文字</span>
+        <span className="explain">役職・所属など(例：株式会社トマト 事務)</span>
         <input type="text" value="株式会社ハック サーバーエンジニア" />
-        <span class="label">1|通常文</span>
-        <span class="explain">郵便番号・住所・電話番号など</span>
-        <div class="info-menu">
-          <select class="type-select">
+        <span className="label">1|通常文</span>
+        <span className="explain">郵便番号・住所・電話番号など</span>
+        <div className="info-menu">
+          <select className="type-select">
             <option value="email">email</option>
             <option value="phone">Tel</option>
             <option value="address">〒</option>
           </select>
-          <input class="content" type="text" value="株式会社ハック サーバーエンジニア" />
+          <input className="content" type="text" value="株式会社ハック サーバーエンジニア" />
         </div>
-        <span class="label">2|通常文</span>
-        <span class="explain">郵便番号・住所・電話番号など</span>
-        <div class="info-menu">
-          <select class="type-select">
+        <span className="label">2|通常文</span>
+        <span className="explain">郵便番号・住所・電話番号など</span>
+        <div className="info-menu">
+          <select className="type-select">
             <option value="email">email</option>
             <option value="phone">Tel</option>
             <option value="address">〒</option>
           </select>
-          <input class="content" type="text" value="株式会社ハック サーバーエンジニア" />
+          <input className="content" type="text" value="株式会社ハック サーバーエンジニア" />
         </div>
-        <span class="label">3|通常文</span>
-        <span class="explain">郵便番号・住所・電話番号など</span>
-        <div class="info-menu">
-          <select class="type-select">
+        <span className="label">3|通常文</span>
+        <span className="explain">郵便番号・住所・電話番号など</span>
+        <div className="info-menu">
+          <select className="type-select">
             <option value="email">email</option>
             <option value="phone">Tel</option>
             <option value="address">〒</option>
           </select>
-          <input class="content" type="text" value="株式会社ハック サーバーエンジニア" />
+          <input className="content" type="text" value="株式会社ハック サーバーエンジニア" />
         </div>
       </form>
     </div>
