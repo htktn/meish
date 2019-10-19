@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './containers/Login';
+import Lp from './containers/Lp';
 import Index from './containers/Index';
 import New from './containers/New';
 import Complete from './containers/Complete';
@@ -14,7 +14,7 @@ export default class App extends React.Component {
       <div>
         <Router>
           <Switch>
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Lp} />
             <Route exact path="/cards" component={Index} />
             <Route path="/cards/new" component={New} />
             <Route path="/cards/:id" component={Show} />
