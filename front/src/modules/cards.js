@@ -23,8 +23,13 @@ export const createCard = function(body) {
 
 //for card show
 export const getCard = function(id) {
-  return fetch(`${process.env.BACKEND_DOMAIN}/cards/${id}`, {
+  return fetch(`http://localhost:3000//cards/${id}`, {
     method: 'get',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   }).then(res => {
     if (res.ok) {
       return res.json();
@@ -36,8 +41,13 @@ export const getCard = function(id) {
 
 //for user card show. 他の人のカードのshow
 export const getUserCard = function(id) {
-  return fetch(`${process.env.BACKEND_DOMAIN}/other_cards/${id}`, {
+  return fetch(`http://localhost:3000//other_cards/${id}`, {
     method: 'get',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   }).then(res => {
     if (res.ok) {
       return res.json();

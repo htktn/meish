@@ -8,14 +8,14 @@ import GreenBtn from './GreenBtn';
 const NormalShow = withStyles((theme) => ({
 
 }))((props) => {
-  // const {classes, onClick} = props
+  const {classes, onClick, kana, name, role, infoArray, themeId} = props
   return (
     <div className="normalshow-container">
       <div className="header" type="complete">
           <p className="back" ><span className="arrow"></span>戻る</p>
           <p className="logo">meish</p>
         </div>
-        <Card />
+        <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={themeId}/>
         <div className="sec01">
           <div onClick={() => this.onRedirect('/')}>
             <GreenBtn title="画像をカメラロールに保存する"  />
