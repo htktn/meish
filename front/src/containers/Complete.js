@@ -40,7 +40,7 @@ class Complete extends React.Component {
         <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
         <div className="qr-body">
           <p className="title">QRコードで共有</p>
-          <QRCode value={`http://localhost:8080/cards/${createdCardId}`} />
+          <QRCode value={`10.156.206.25:8080/cards/${createdCardId}`} />
           <div className="qr-share">
             <div className="qr-share-body">
               <img src={`${process.env.PUBLIC_URL}/icon/link.png`} alt="リンクをコピー" />

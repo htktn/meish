@@ -28,18 +28,28 @@ class Show extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { name, role, kana } = this.state.res
-    const themeId = this.state.res.theme_id
-    let info = this.state.res.informations
-    let infoArray = []
-    if(info) {
-      info.map(info => {
-        infoArray.push({
-          "val": `${info.content}`,
-          "key": `${info.type}`
-        })
-      })
-    }
+    let { name, role, kana } = this.state.res
+    let themeId = this.state.res.theme_id
+    //TODO 後で消す
+    themeId = 13
+    name = "稲垣光輝"
+    kana = "いながきこうき"
+    role = "Meish株式会社CEO"
+    let infoArray = [
+      {'key': 'phone', 'val': '09048338999'},
+      {'key': 'email', 'val': 'koki892jj@gmail.com'},
+      {'key': 'address', 'val': '埼玉県熊谷市熊谷1-9-3 リバーフロント710'},
+    ]
+    //let info = this.state.res.informations
+    //let infoArray = []
+    //if(info) {
+    //  info.map(info => {
+    //    infoArray.push({
+    //      "val": `${info.content}`,
+    //      "key": `${info.type}`
+    //    })
+    //  })
+    //}
     return (
       // <SignedInShow onClick={this.onClick} />
       <>
