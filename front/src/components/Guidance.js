@@ -34,9 +34,6 @@ const Guidance = withStyles((theme) => ({
     <div className={classes.container}>
       <p className={classes.title}>名刺を作りましょう</p>
       <IntroCard />
-      <Button variant="contained" className={classes.addButton}>
-        追加 
-      </Button>
     </div>
   )
 })
