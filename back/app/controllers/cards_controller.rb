@@ -58,6 +58,7 @@ class CardsController < ApplicationController
     card = Card.new(card_params)
     card.user = current_user
     return render status: 404, json: { status: 404, message: 'Failed to create' } if !card.save
+    current_user.update(default_card_id: card.id) if current_user.cards.count == 0 
 
     card_informations = information_params.map{|info| CardInformation.new(info)}
 

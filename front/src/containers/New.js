@@ -108,7 +108,15 @@ class New extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { tabIndex, name, kana, role, infoArray, themes, selectedThemeId, redirect } = this.state;
+    let { tabIndex, name, kana, role, infoArray, themes, selectedThemeId, redirect } = this.state;
+    // name = "稲垣光輝"
+    // kana = "いながきこうき"
+    // role ='Qulii株式会社'
+    // infoArray = [
+    //   {'key': 'phone', 'val': '08049339028'},
+    //   {'key': 'email', 'val': 'inagakikk@gmail.com'},
+    //   {'key': 'address', 'val': '埼玉県熊谷市1-2-37アクアフロント'},
+    // ]
     return (
       <div className={classes.container}>
         {redirect && (<Redirect to={{pathname: '/cards/complete', state: this.state}} />)}

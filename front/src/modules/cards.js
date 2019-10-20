@@ -59,8 +59,13 @@ export const getUserCard = function(id) {
 
 //for card index 
 export const getAllCards = function() {
-  return fetch(`${process.env.BACKEND_DOMAIN}/cards`, {
+  return fetch(`http://localhost:3000/cards`, {
     method: 'get',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   }).then(res => {
     if (res.ok) {
       return res.json();
