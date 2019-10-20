@@ -11,6 +11,7 @@
   box-sizing: border-box;
   position: relative;
   transition: 1s;
+  color: black;
 }
 
 .meish-body img{
