@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* インデックスカード一覧ページ */
+
+.MuiButtonBase-root.Mui-selected {
+  font-weight: bold;
+}
+
+.tab_mycard {
+  width: 100%;
+  margin: 0;
+  padding: 20px 0px;
+}
+
+.tab_mycard img.ad-box {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}

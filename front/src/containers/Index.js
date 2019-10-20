@@ -5,6 +5,11 @@ import AddIcon from '@material-ui/icons/Add';
 import { Redirect } from "react-router-dom";
 import Guidance from '../components/Guidance';
 import CreateMenu from '../components/CreateMenu';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Card from '../components/Card'
+
+import "./css/index.css";
 
 //TODO functional componentにする
 @withStyles(theme => ({
@@ -57,6 +62,7 @@ class Index extends React.Component {
     this.state ={
       clicked: false,
       redirect: false,
+      tabIndex: 0,
     }
   }
 
@@ -70,10 +76,14 @@ class Index extends React.Component {
     this.setState({redirect: true, redirectTo: to});
   }
 
+  handleTabChange = (val) => {
+    this.setState({ tabIndex: val === 0 ? 1 : 0})
+  }
+
   render() {
     const { classes } = this.props;
     // const { clicked, redirect } = this.state;
-    const { clicked, redirect, redirectTo} = this.state;
+    const { tabIndex, clicked, redirect, redirectTo} = this.state;
     //TODO redirectフラグを見て、遷移するかどうか判断するようにする、遷移先をonClickのときに指定できるようにする
     return (
       <>
@@ -81,27 +91,84 @@ class Index extends React.Component {
         { !clicked ?
           <div className={classes.container}>
             <p className={classes.logo}>meish</p>
-            <h1 className={classes.title}>名刺一覧</h1>
-            <Guidance />
+            {/* <h1 className={classes.title}>名刺一覧</h1>
+            <Guidance /> */}
+            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
+            {tabIndex === 0 ?
+              <TabCard1 /> :
+              <TabCard2 />
+            }
             <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton} onClick={this.onClick}>
               <AddIcon />
             </Fab>
           </div>
           : 
           <div className={classes.container}>
-          <p className={classes.logo}>meish</p>
-          <h1 className={classes.title}>名刺一覧</h1>
-          <Guidance />
-          <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
-            <AddIcon />
-          </Fab>
-          <CreateMenu onRedirect={this.onRedirect}/>
-        </div>
+            <p className={classes.logo}>meish</p>
+            {/* <h1 className={classes.title}>名刺一覧</h1>
+            <Guidance /> */}
+            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
+              {tabIndex === 0 ?
+                <TabCard1 /> :
+                <TabCard2 />
+              }
+            <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
+              <AddIcon />
+            </Fab>
+            <CreateMenu onRedirect={this.onRedirect}/>
+          </div>
         }
       </>
     );
   }
 }
 
+const TabHeader = withStyles((theme) => ({
+  container: {
+    background: '#585858',
+  },
+  // label: {
+  // }
+}))((props) => {
+  const {classes, handleChange, value} = props
+  return (
+      <Tabs
+        value={value}
+        onChange={() => handleChange(value)}
+        indicatorColor="primary"
+        textColor="white"
+        centered
+      >
+        <Tab label="作った名刺一覧" />
+        <Tab label="貰った名刺一覧" />
+      </Tabs>
+  )
+})
+
+//TODO placeholderをつけたい
+const TabCard1= withStyles((theme) => ({
+}))((props) => {
+  const { } = props
+  return (
+    <div className="tab_mycard">
+      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"1"} />
+      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"5"} />
+      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"11"} />
+      <img className="ad-box" src={`${process.env.PUBLIC_URL}/component/add-meishi.png`} alt="いろんな名刺を増やせます" />
+    </div>
+  )
+})
+
+const TabCard2= withStyles((theme) => ({
+}))((props) => {
+  const { } = props
+  return (
+    <div className="tab_getcard">
+      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"2"} />
+      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"3"} />
+      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"9"} />
+    </div>
+  )
+})
 
 export default Index
