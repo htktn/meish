@@ -7,6 +7,21 @@
   background: #000000;
 }
 
+.complete-container .complete-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.03em;
+  color: #0FA369;
+  text-align: center;
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+}
+
+
 .complete-container .qr-body {
   margin: -80px 55px 30px;
   padding: 30px;

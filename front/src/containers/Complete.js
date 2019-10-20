@@ -36,6 +36,7 @@ class Complete extends React.Component {
           <p className="back" onClick={this.onClick}><span className="arrow"></span>戻る</p>
           <p className="logo">meish</p>
         </div>
+        <p className="complete-title">完成！</p>
         <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
         <div className="qr-body">
           <p className="title">QRコードで共有</p>
@@ -51,8 +52,8 @@ class Complete extends React.Component {
             </div>
           </div>
         </div>
-        <div onClick={() => this.onRedirect('/')}>
-          <GreenBtn title="会員登録をして保存"  />
+        <div onClick={() => this.onRedirect('/cards')}>
+          <GreenBtn title="名刺の一覧に戻る"  />
         </div>
       </div>
     );
