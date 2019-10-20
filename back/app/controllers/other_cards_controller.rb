@@ -8,6 +8,8 @@ class OtherCardsController < ApplicationController
         id: card.id,
         name: card.name,
         role: card.role, 
+        kana: card.kana, 
+        theme_id: card.theme_id,
         informations: card.card_informations.map do |card_info| 
           {
             id: card_info.id,
@@ -28,6 +30,8 @@ class OtherCardsController < ApplicationController
       id: @card.id,
       name: @card.name,
       role: @card.role, 
+      kana: @card.kana, 
+      theme_id: @card.theme_id,
       informations: @card.card_informations.map do |card_info| 
         {
           id: card_info.id,
