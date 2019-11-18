@@ -16,8 +16,8 @@ const Card = withStyles((theme) => ({
   },
 
 }))((props) => {
-  const {classes, card} = props
-  const {name, kana, role, theme_id, informations} = card
+  const {classes} = props
+  const {name, kana, role, theme_id, informations} = props.card
   return (
     <div className="meishi-outer">
       <div className="meish-body" theme={theme_id.toString()}>
