@@ -16,8 +16,8 @@ const Card = withStyles((theme) => ({
   },
 
 }))((props) => {
-  const { classes, infoArray, cardInfo} = props
-  const {name, kana, role, theme_id} = cardInfo
+  const {classes, card} = props
+  const {name, kana, role, theme_id, informations} = card
   return (
     <div className="meishi-outer">
       <div className="meish-body" theme={theme_id.toString()}>
@@ -25,8 +25,8 @@ const Card = withStyles((theme) => ({
         <span className="kana">{kana}</span>
         <span className="name">{name}</span>
         <span className="role">{role}</span>
-        {infoArray.map((info, index) => {
-          return <span className="info" info={index.toString()}><span type={info.key}></span>{info.val}</span>
+        {informations.map((info, index) => {
+          return <span className="info" info={index.toString()}><span type={info.type}></span>{info.content}</span>
         })}
       </div>
     </div>
