@@ -78,7 +78,6 @@ class Index extends React.Component {
   }
 
   onRedirect = to => {
-    //TODO historyにpushするようにしてから、引数で指定されたtoへ遷移するようにする
     this.props.history.push(to);
     this.setState({redirect: true, redirectTo: to});
   }
@@ -88,42 +87,36 @@ class Index extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
-    // const { clicked, redirect } = this.state;
-    const { tabIndex, clicked, redirect, redirectTo, cards } = this.state;
+    const {classes} = this.props;
+    const {tabIndex, clicked, redirect, redirectTo, cards} = this.state;
 
-    //TODO redirectフラグを見て、遷移するかどうか判断するようにする、遷移先をonClickのときに指定できるようにする
     return (
       <>
-        {redirect && <Redirect to={`/${redirectTo}`}/> }
+        {redirect && <Redirect to={`/${redirectTo}`} /> }
         { !clicked ?
           <div className={classes.container}>
             <p className={classes.logo}>meish</p>
-            {/* <h1 className={classes.title}>名刺一覧</h1>
-            <Guidance /> */}
-            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
+            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
             {tabIndex === 0 && cards ?
-              <TabCard1 cards={cards}/> :
-              <TabCard2 />
+              <CreatedCards cards={cards}/> :
+              <ReceivedCards />
             }
             <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton} onClick={this.onClick}>
               <AddIcon />
             </Fab>
           </div>
-          : 
+          :
           <div className={classes.container}>
             <p className={classes.logo}>meish</p>
-            {/* <h1 className={classes.title}>名刺一覧</h1>
-            <Guidance /> */}
-            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
+            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
               {tabIndex === 0 && cards ?
-                <TabCard1 cards={cards} /> :
-                <TabCard2 />
+                <CreatedCards cards={cards} /> :
+                <ReceivedCards />
               }
             <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
               <AddIcon />
             </Fab>
-            <CreateMenu onRedirect={this.onRedirect}/>
+            <CreateMenu onRedirect={this.onRedirect} />
           </div>
         }
       </>
@@ -135,8 +128,6 @@ const TabHeader = withStyles((theme) => ({
   container: {
     background: '#585858',
   },
-  // label: {
-  // }
 }))((props) => {
   const {classes, handleChange, value} = props
   return (
@@ -153,46 +144,34 @@ const TabHeader = withStyles((theme) => ({
   )
 })
 
-//TODO class componentにする
+//TODO useEffectを使ってcardsをとってこれるようにする
+//TODO CreatedCardsとReceivedCardsはcardsさえ変えれば同じcomponentにできそう(渡す関数だけ変えれば良さそう)
 //TODO placeholderをつけたい
-const TabCard1= withStyles((theme) => ({
+const CreatedCards= withStyles((theme) => ({
 }))((props) => {
   const {cards} = props
-  let allInfoArray = []
-  cards.map(card => {
-    let infoArray = []
-    card.informations.map(info => {
-      infoArray.push({
-        "val": `${info.content}`,
-        "key": `${info.type}`
-      })
-    })
-    allInfoArray.push(infoArray)
-  })
   return (
     <div className="tab_mycard">
-      {
-        cards.map((card, index) => {
-          return (
-            <Card name={card.name} kana={card.kana} role={card.role} infoArray={allInfoArray[index]} themeId={card.theme_id} />
-          )
-        })
-      }
+      {cards.map(card => <Card card={card} />)}
       <img className="ad-box" src={`${process.env.PUBLIC_URL}/component/add-meishi.png`} alt="いろんな名刺を増やせます" />
     </div>
   )
 })
 
-const TabCard2= withStyles((theme) => ({
-}))((props) => {
-  const { } = props
+//TODO useEffectを使ってcardsをとってこれるようにする
+const ReceivedCards = (props) => {
+  // const { cards } = props
+  const cards = [
+    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "2", informations: [{type:'email', content:'yuya'}]},
+    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "3", informations: [{type: 'email', content:'yuya'}]},
+    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "4", informations: [{type: 'email', content:'yuya'}]},
+  ]
+
   return (
-    <div className="tab_getcard">
-      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"2"} />
-      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"3"} />
-      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"9"} />
+    <div>
+      {cards.map(card => <Card card={card} />)}
     </div>
   )
-})
+}
 
 export default Index

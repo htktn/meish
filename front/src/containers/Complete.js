@@ -1,5 +1,4 @@
 import React from "react";
-import { withStyles } from '@material-ui/core';
 import QRCode from "qrcode.react"
 import Card from '../components/Card'
 import GreenBtn from '../components/GreenBtn';
@@ -8,13 +7,7 @@ import GreenBtn from '../components/GreenBtn';
 import "./css/complete.css";
 import "./css/header.css";
 
-@withStyles(theme => ({
-
-}))
 class Complete extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   onClick = () => {
     this.props.history.push("/");
@@ -27,9 +20,16 @@ class Complete extends React.Component {
   }
 
   render() {
-    const { classes, location } = this.props;
+    const {classes, location} = this.props;
     const state = location.state;
-    const {name, kana, role, infoArray, selectedThemeId, createdCardId } = state;
+    const {name, kana, role, informations, selectedThemeId, createdCardId} = state;
+    const card = {
+      name: name,
+      kana: kana,
+      role: role,
+      theme_id: selectedThemeId,
+      informations: informations
+    }
     return (
       <div className="complete-container">
         <div className="header" type="complete">
@@ -37,10 +37,10 @@ class Complete extends React.Component {
           <p className="logo">meish</p>
         </div>
         <p className="complete-title">完成！</p>
-        <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
+        <Card card={card} />
         <div className="qr-body">
           <p className="title">QRコードで共有</p>
-          <QRCode value={`10.156.206.25:8080/cards/${createdCardId}`} />
+          <QRCode value={`${process.env.PUBLIC_URL}/cards/${createdCardId}`} />
           <div className="qr-share">
             <div className="qr-share-body">
               <img src={`${process.env.PUBLIC_URL}/icon/link.png`} alt="リンクをコピー" />

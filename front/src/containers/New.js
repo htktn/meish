@@ -31,18 +31,18 @@ class New extends React.Component {
       kana: '',
       name: '',
       role: '',
-      infoArray: [
+      informations: [
         {
-          'key': 'email',
-          'val': ''
+          'type': 'email',
+          'content': ''
         },
         {
-          'key': 'phone',
-          'val': ''
+          'type': 'phone',
+          'content': ''
         },
         {
-          'key': 'address',
-          'val': ''
+          'type': 'address',
+          'content': ''
         },
       ]
     }
@@ -59,25 +59,30 @@ class New extends React.Component {
     this.setState({ [stateName]: text });
   };
 
-  onSubmit = () => {
-    const { name, kana, role, infoArray, selectedThemeId } = this.state;
+  //TODO refactor and move this to module so that update method might be able to use this method
+  prepareSubmitData = () => {
+    const { name, kana, role, informations, selectedThemeId } = this.state;
     let infos = []
-    infoArray.map(info => {
+    informations.map(info => {
       let typeId = 1
-      if (info.key === 'phone') typeId = 2
-      if (info.key === 'address') typeId = 3
+      if (info.type === 'phone') typeId = 2
+      if (info.type === 'address') typeId = 3
       infos.push({
-        "content": `${info.val}`,
+        "content": `${info.content}`,
         "type_id": typeId,
       })
     })
-    const body = {
+    return {
       "informations": infos,
       "role": role,
       "name": name,
       "kana": kana,
       "theme_id": selectedThemeId,
     }
+  }
+
+  onSubmit = () => {
+    const body = this.prepareSubmitData()
     createCard(body).then(result => {
       this.props.history.push("/cards/new");
       this.setState({redirect: true, createdCardId: result.id })
@@ -90,9 +95,9 @@ class New extends React.Component {
 
   onToggle = (e, index) => {
     const text = e.target.value.trim()
-    let { infoArray } = this.state
-    infoArray[index].key = text
-    this.setState({ infoArray })
+    let { informations } = this.state
+    informations[index].type = text
+    this.setState({ informations })
   }
 
   onSelectTheme = (e, id) => {
@@ -101,22 +106,21 @@ class New extends React.Component {
 
   onPullTextChange = (e, index) => {
     const text = e.target.value.trim();
-    let { infoArray } = this.state;
-    infoArray[index].val = text
-    this.setState({ infoArray })
+    let { informations } = this.state;
+    informations[index].content = text
+    this.setState({ informations })
   }
 
   render() {
     const { classes } = this.props;
-    let { tabIndex, name, kana, role, infoArray, themes, selectedThemeId, redirect } = this.state;
-    // name = "稲垣光輝"
-    // kana = "いながきこうき"
-    // role ='Qulii株式会社'
-    // infoArray = [
-    //   {'key': 'phone', 'val': '08049339028'},
-    //   {'key': 'email', 'val': 'inagakikk@gmail.com'},
-    //   {'key': 'address', 'val': '埼玉県熊谷市1-2-37アクアフロント'},
-    // ]
+    let { tabIndex, name, kana, role, informations, themes, selectedThemeId, redirect } = this.state;
+    const card = {
+      name: name,
+      kana: kana,
+      role: role,
+      theme_id: selectedThemeId,
+      informations: informations
+    }
     return (
       <div className={classes.container}>
         {redirect && (<Redirect to={{pathname: '/cards/complete', state: this.state}} />)}
@@ -129,12 +133,12 @@ class New extends React.Component {
           <span className="completeBtn" onClick={this.onSubmit}>完了</span>
         </div>
         <div className={classes.cardWrapper}>
-          <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
+          <Card card={card} />
         </div>
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
         {tabIndex === 0 ?
-          <TabForm1 onToggle={this.onToggle} onChange={this.onChange} onPullTextChange={this.onPullTextChange} name={name} kana={kana} role={role} infoArray={infoArray} /> :
-          <TabForm2 themes={themes} selectedThemeId={selectedThemeId} onClick={this.onSelectTheme}/>
+          <ProfileForm onToggle={this.onToggle} onChange={this.onChange} onPullTextChange={this.onPullTextChange} card={card} /> :
+          <LayoutSelect themes={themes} selectedThemeId={selectedThemeId} onClick={this.onSelectTheme}/>
         }
       </div>
     );
@@ -166,32 +170,32 @@ const TabHeader = withStyles((theme) => ({
 })
 
 //TODO placeholderをつけたい
-const TabForm1= withStyles((theme) => ({
+const ProfileForm = withStyles((theme) => ({
 }))((props) => {
-  const { onPullTextChange, onToggle, onChange, name, kana, role, infoArray } = props;
+  const { onPullTextChange, onToggle, onChange, card } = props;
   return (
     <div className="tab_info">
       <span className="message">入力したプロフィールは名刺にすぐに反映されるよ</span>
       <form>
         <span className="label complete">名前</span>
-        <input type="text" onChange={e => onChange(e, 'name')} value={name} />
+        <input type="text" onChange={e => onChange(e, 'name')} value={card.name} />
         <span className="label complete">名前の読み方</span>
-        <input type="text" onChange={e => onChange(e, 'kana')} value={kana} />
+        <input type="text" onChange={e => onChange(e, 'kana')} value={card.kana} />
         <span className="label">名前下小文字</span>
         <span className="explain">役職・所属など(例：株式会社トマト 事務)</span>
-        <input type="text" onChange={e => onChange(e, 'role')} value={role} />
-        {infoArray.map((info, index) => {
+        <input type="text" onChange={e => onChange(e, 'role')} value={card.role} />
+        {card.informations.map((info, index) => {
           return(
             <>
               <span className="label">{index + 1}|通常文</span>
               <span className="explain">郵便番号・住所・電話番号など</span>
               <div className="info-menu">
-                <select className="type-select" value={info.key} onChange={e => onToggle(e, index)}>
+                <select className="type-select" value={info.type} onChange={e => onToggle(e, index)}>
                   <option value="email">email</option>
                   <option value="phone">Tel</option>
                   <option value="address">〒</option>
                 </select>
-                <input className="content" type="text" onChange={e => onPullTextChange(e, index)} value={info.val} />
+                <input className="content" type="text" onChange={e => onPullTextChange(e, index)} value={info.content} />
               </div>
             </>
           )
@@ -201,7 +205,7 @@ const TabForm1= withStyles((theme) => ({
   )
 })
 
-const TabForm2= withStyles((theme) => ({
+const LayoutSelect = withStyles((theme) => ({
 }))((props) => {
   const { classes, themes, selectedThemeId, onClick } = props
   return (

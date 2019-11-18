@@ -29,38 +29,27 @@ class Show extends React.Component {
   render() {
     const { classes } = this.props;
     let { name, role, kana } = this.state.res
-    let themeId = this.state.res.theme_id
-    //TODO 後で消す
-    themeId = 13
-    name = "稲垣光輝"
-    kana = "いながきこうき"
-    role = "Meish株式会社CEO"
-    let infoArray = [
-      {'key': 'phone', 'val': '09048338999'},
-      {'key': 'email', 'val': 'koki892jj@gmail.com'},
-      {'key': 'address', 'val': '埼玉県熊谷市熊谷1-9-3 リバーフロント710'},
-    ]
-    //let info = this.state.res.informations
-    //let infoArray = []
-    //if(info) {
-    //  info.map(info => {
-    //    infoArray.push({
-    //      "val": `${info.content}`,
-    //      "key": `${info.type}`
-    //    })
-    //  })
-    //}
+    // let theme_id = this.state.res.theme_id
+    let card = {
+      name: "津村光輝",
+      kana: "つむらこうき",
+      role: "Meish株式会社CEO",
+      theme_id: 13,
+      informations: [
+        {'type': 'phone', 'content': '09048338999'},
+        {'type': 'email', 'content': 'koki892jj@gmail.com'},
+        {'type': 'address', 'content': '埼玉県熊谷市熊谷1-9-3 リバーフロント710'},
+      ]
+    }
     return (
       // <SignedInShow onClick={this.onClick} />
       <>
-        {themeId ?
-        <NormalShow onClick={this.onClick} infoArray={infoArray} name={name} kana={kana} role={role} themeId={themeId} />  :
-        <div />
+        {
+          card.theme_id ? <NormalShow onClick={this.onClick} card={card} /> 
+          : <div />
         }
       </>
-      
-      // <h1>hello</h1>
-    );
+    )
   }
 }
 export default Show
