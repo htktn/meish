@@ -16,11 +16,12 @@ const Card = withStyles((theme) => ({
   },
 
 }))((props) => {
-  const { classes, name, kana, role, infoArray, themeId } = props
+  const { classes, infoArray, cardInfo} = props
+  const {name, kana, role, theme_id} = cardInfo
   return (
     <div className="meishi-outer">
-      <div className="meish-body" theme={themeId.toString()}>
-        <img src={`${process.env.PUBLIC_URL}/themes/background/${themeId}_background.jpg`} />
+      <div className="meish-body" theme={theme_id.toString()}>
+        <img src={`${process.env.PUBLIC_URL}/themes/background/${theme_id}_background.jpg`} />
         <span className="kana">{kana}</span>
         <span className="name">{name}</span>
         <span className="role">{role}</span>

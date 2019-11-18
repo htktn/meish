@@ -109,14 +109,12 @@ class New extends React.Component {
   render() {
     const { classes } = this.props;
     let { tabIndex, name, kana, role, infoArray, themes, selectedThemeId, redirect } = this.state;
-    // name = "稲垣光輝"
-    // kana = "いながきこうき"
-    // role ='Qulii株式会社'
-    // infoArray = [
-    //   {'key': 'phone', 'val': '08049339028'},
-    //   {'key': 'email', 'val': 'inagakikk@gmail.com'},
-    //   {'key': 'address', 'val': '埼玉県熊谷市1-2-37アクアフロント'},
-    // ]
+    let card = {}
+    //TODO refactor
+    card.name = name
+    card.kana = kana
+    card.role = role
+    card.theme_id = selectedThemeId
     return (
       <div className={classes.container}>
         {redirect && (<Redirect to={{pathname: '/cards/complete', state: this.state}} />)}
@@ -129,7 +127,7 @@ class New extends React.Component {
           <span className="completeBtn" onClick={this.onSubmit}>完了</span>
         </div>
         <div className={classes.cardWrapper}>
-          <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
+          <Card cardInfo={card} infoArray={infoArray} />
         </div>
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
         {tabIndex === 0 ?

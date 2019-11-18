@@ -155,6 +155,7 @@ const TabHeader = withStyles((theme) => ({
 
 //TODO class componentにする
 //TODO placeholderをつけたい
+//TODO CreatedCardTabに名前を変える
 const TabCard1= withStyles((theme) => ({
 }))((props) => {
   const {cards} = props
@@ -173,8 +174,11 @@ const TabCard1= withStyles((theme) => ({
     <div className="tab_mycard">
       {
         cards.map((card, index) => {
+          console.log('###############card#################')
+          console.log(card)
+          console.log('###############card#################')
           return (
-            <Card name={card.name} kana={card.kana} role={card.role} infoArray={allInfoArray[index]} themeId={card.theme_id} />
+            <Card cardInfo={card} infoArray={allInfoArray[index]} />
           )
         })
       }
@@ -183,14 +187,26 @@ const TabCard1= withStyles((theme) => ({
   )
 })
 
+//TODO ReceivedCardTabに名前を変える
 const TabCard2= withStyles((theme) => ({
 }))((props) => {
-  const { } = props
+  // const { cards } = props
+  const cards = [
+    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "2"},
+    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "3"},
+    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "4"},
+  ]
+  const infoArray = [{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]
+
   return (
     <div className="tab_getcard">
-      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"2"} />
-      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"3"} />
-      <Card name={"津村光輝"} kana={"つむらこうき"} role={"カリスマエンジニア"} infoArray={[{key:'email', val:'yuya'},{key: 'email',val:'yuya'},{key: 'email',val:'yuya'}]} themeId={"9"} />
+      {
+        cards.map((card, index) => {
+          return (
+            <Card cardInfo={card} infoArray={infoArray} />
+          )
+        })
+      }
     </div>
   )
 })

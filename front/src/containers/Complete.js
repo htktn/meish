@@ -30,6 +30,11 @@ class Complete extends React.Component {
     const { classes, location } = this.props;
     const state = location.state;
     const {name, kana, role, infoArray, selectedThemeId, createdCardId } = state;
+    let card = {}
+    card.name = name
+    card.kana = kana
+    card.role = role
+    card.theme_id = selectedThemeId
     return (
       <div className="complete-container">
         <div className="header" type="complete">
@@ -37,7 +42,7 @@ class Complete extends React.Component {
           <p className="logo">meish</p>
         </div>
         <p className="complete-title">完成！</p>
-        <Card name={name} kana={kana} role={role} infoArray={infoArray} themeId={selectedThemeId} />
+        <Card cardInfo={card} infoArray={infoArray} />
         <div className="qr-body">
           <p className="title">QRコードで共有</p>
           <QRCode value={`10.156.206.25:8080/cards/${createdCardId}`} />
