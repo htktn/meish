@@ -3,10 +3,10 @@ import { withStyles } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { Redirect } from "react-router-dom";
-import Guidance from '../components/Guidance';
 import CreateMenu from '../components/CreateMenu';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Slide from '@material-ui/core/Fade';
 import Card from '../components/Card'
 import { getAllCards } from '../modules/cards';
 
@@ -60,7 +60,7 @@ import "./css/index.css";
 class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={
+    this.state = {
       clicked: false,
       redirect: false,
       tabIndex: 0,
@@ -82,7 +82,7 @@ class Index extends React.Component {
     this.setState({redirect: true, redirectTo: to});
   }
 
-  handleTabChange = (val) => {
+  handleTabChange = val => {
     this.setState({ tabIndex: val === 0 ? 1 : 0})
   }
 
@@ -93,43 +93,35 @@ class Index extends React.Component {
     return (
       <>
         {redirect && <Redirect to={`/${redirectTo}`} /> }
-        { !clicked ?
           <div className={classes.container}>
             <p className={classes.logo}>meish</p>
             <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
-            {tabIndex === 0 && cards ?
-              <CreatedCards cards={cards}/> :
-              <ReceivedCards />
-            }
-            <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton} onClick={this.onClick}>
-              <AddIcon />
-            </Fab>
-          </div>
-          :
-          <div className={classes.container}>
-            <p className={classes.logo}>meish</p>
-            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
-              {tabIndex === 0 && cards ?
-                <CreatedCards cards={cards} /> :
-                <ReceivedCards />
+              {cards !== undefined ?
+                tabIndex === 0 ?
+                  <CreatedCards cards={cards}/> :
+                  <ReceivedCards />
+                : null
               }
-            <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
-              <AddIcon />
-            </Fab>
-            <CreateMenu onRedirect={this.onRedirect} />
+            {clicked ?
+                <>
+                  <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
+                    <AddIcon />
+                  </Fab>
+                  <CreateMenu onRedirect={this.onRedirect} />
+                </>
+              :
+                <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton} onClick={this.onClick}>
+                  <AddIcon />
+                </Fab>
+            }
           </div>
-        }
       </>
     );
   }
 }
 
-const TabHeader = withStyles((theme) => ({
-  container: {
-    background: '#585858',
-  },
-}))((props) => {
-  const {classes, handleChange, value} = props
+const TabHeader = props => {
+  const { handleChange, value} = props
   return (
       <Tabs
         value={value}
@@ -142,7 +134,7 @@ const TabHeader = withStyles((theme) => ({
         <Tab label="貰った名刺一覧" />
       </Tabs>
   )
-})
+}
 
 //TODO useEffectを使ってcardsをとってこれるようにする
 //TODO CreatedCardsとReceivedCardsはcardsさえ変えれば同じcomponentにできそう(渡す関数だけ変えれば良さそう)
@@ -151,15 +143,17 @@ const CreatedCards= withStyles((theme) => ({
 }))((props) => {
   const {cards} = props
   return (
-    <div className="tab_mycard">
-      {cards.map(card => <Card card={card} />)}
-      <img className="ad-box" src={`${process.env.PUBLIC_URL}/component/add-meishi.png`} alt="いろんな名刺を増やせます" />
-    </div>
+    <Slide direction='down' in={true} timeout={1000}>
+      <div className="tab_mycard">
+        {cards.map((card, i)=> <Card card={card} key={i} />)}
+        <img className="ad-box" src={`${process.env.PUBLIC_URL}/component/add-meishi.png`} alt="いろんな名刺を増やせます" />
+      </div>
+    </Slide>
   )
 })
 
 //TODO useEffectを使ってcardsをとってこれるようにする
-const ReceivedCards = (props) => {
+const ReceivedCards = props => {
   // const { cards } = props
   const cards = [
     {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "2", informations: [{type:'email', content:'yuya'}]},
@@ -168,9 +162,12 @@ const ReceivedCards = (props) => {
   ]
 
   return (
-    <div>
-      {cards.map(card => <Card card={card} />)}
-    </div>
+    <Slide direction='down' in={true} timeout={1000}>
+      <div className="tab_mycard">
+        {cards.map((card, i)=> <Card card={card} key={i} />)}
+        <img className="ad-box" src={`${process.env.PUBLIC_URL}/component/add-meishi.png`} alt="いろんな名刺を増やせます" />
+      </div>
+    </Slide>
   )
 }
 
