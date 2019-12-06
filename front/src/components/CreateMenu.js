@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 import GreenBtn from '../components/GreenBtn';
 import WhiteBtn from '../components/WhiteBtn';
 
@@ -18,17 +19,17 @@ const CreateMenu = withStyles((theme) => ({
     width: '100%'
   }
 }))((props) => {
-  const {classes, onRedirect} = props;
+  const {classes} = props;
 
   return (
     <div className={classes.modalBack}>
       <div className={classes.createNewBtn}>
-        <div onClick={() => onRedirect('cards/new')}>
+        <Link to='cards/new' style={{textDecoration: 'none'}}>
           <GreenBtn title="新規プロフィールで作る" />
-        </div>
-        <div onClick={() => onRedirect('cards/new')}>
+        </Link>
+        <Link to='cards/new' style={{textDecoration: 'none'}}>
           <WhiteBtn title="デフォルトの名刺で作る" />
-        </div>
+        </Link>
       </div>
     </div>
     )

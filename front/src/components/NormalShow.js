@@ -1,25 +1,25 @@
 import React from "react";
-import { withStyles } from '@material-ui/core';
 import Card from './Card'
+import { Link } from 'react-router-dom'
 import "../containers/css/header.css";
 import "../containers/css/normalshow.css";
 import GreenBtn from './GreenBtn';
 
-const NormalShow = withStyles((theme) => ({
-
-}))((props) => {
-  const {classes, onClick, card} = props
+const NormalShow = (props) => {
+  const {card} = props
   return (
     <div className="normalshow-container">
       <div className="header" type="complete">
-          <p className="back" onClick={onClick}><span className="arrow"></span>戻る</p>
+          <Link to={'/cards'}>
+            <p className="back"><span className="arrow"></span>戻る</p>
+          </Link>
           <p className="logo">meish</p>
         </div>
         <Card card={card} />
         <div className="sec01">
-          <div onClick={() => this.onRedirect('/')}>
+          <Link to='/' style={{textDecoration: 'none'}}>
             <GreenBtn title="画像をカメラロールに保存する"  />
-          </div>
+          </Link>
           <p class="message">ログインすると名刺の情報をもっと便利に保存できます</p>
           <a href="http://localhost:3000/user/auth/twitter/">
             <img className="login-btn01" src={`${process.env.PUBLIC_URL}/lp/lp-login.png`} alt="ログイン" />
@@ -36,6 +36,6 @@ const NormalShow = withStyles((theme) => ({
         </div>
     </div>
   )
-})
+}
 
 export default NormalShow
