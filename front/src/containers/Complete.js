@@ -5,6 +5,8 @@ import GreenBtn from '../components/GreenBtn';
 import { Link } from 'react-router-dom'
 import "./css/complete.css";
 import "./css/header.css";
+import copyLink from '../../public/icon/link-w.png'
+import share from '../../public/icon/share-w.png'
 
 class Complete extends React.Component {
 
@@ -34,11 +36,11 @@ class Complete extends React.Component {
           <QRCode value={`${process.env.PUBLIC_URL}/cards/${createdCardId}`} />
           <div className="qr-share">
             <div className="qr-share-body">
-              <img src={`${process.env.PUBLIC_URL}/icon/link.png`} alt="リンクをコピー" />
+              <img src={copyLink} alt="リンクをコピー" />
               <span>リンクをコピー</span>
             </div>
             <div className="qr-share-body">
-              <img src={`${process.env.PUBLIC_URL}/icon/share.png`} alt="その他で共有" />
+              <img src={share} alt="その他で共有" />
               <span>その他で共有</span>
             </div>
           </div>
