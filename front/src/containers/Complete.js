@@ -2,25 +2,14 @@ import React from "react";
 import QRCode from "qrcode.react"
 import Card from '../components/Card'
 import GreenBtn from '../components/GreenBtn';
-// import { Redirect } from "react-router-dom";
-// import background from "../../static/background.png";
+import { Link } from 'react-router-dom'
 import "./css/complete.css";
 import "./css/header.css";
 
 class Complete extends React.Component {
 
-  onClick = () => {
-    this.props.history.push("/");
-    this.setState({ redirect: true });
-  };
-
-  onRedirect = to => {
-    this.props.history.push(to);
-    this.setState({redirect: true, redirectTo: to});
-  }
-
   render() {
-    const {classes, location} = this.props;
+    const {location} = this.props;
     const state = location.state;
     const {name, kana, role, informations, selectedThemeId, createdCardId} = state;
     const card = {
@@ -33,7 +22,9 @@ class Complete extends React.Component {
     return (
       <div className="complete-container">
         <div className="header" type="complete">
-          <p className="back" onClick={this.onClick}><span className="arrow"></span>戻る</p>
+          <Link to={'/cards'}>
+            <p className="back"><span className="arrow"></span>戻る</p>
+          </Link>
           <p className="logo">meish</p>
         </div>
         <p className="complete-title">完成！</p>
@@ -52,9 +43,9 @@ class Complete extends React.Component {
             </div>
           </div>
         </div>
-        <div onClick={() => this.onRedirect('/cards')}>
+        <Link to={'/cards'} style={{textDecoration: 'none'}}>
           <GreenBtn title="名刺の一覧に戻る"  />
-        </div>
+        </Link>
       </div>
     );
   }

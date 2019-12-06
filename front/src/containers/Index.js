@@ -2,7 +2,6 @@ import React from "react";
 import { withStyles } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import { Redirect } from "react-router-dom";
 import CreateMenu from '../components/CreateMenu';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -62,7 +61,6 @@ class Index extends React.Component {
     super(props);
     this.state = {
       clicked: false,
-      redirect: false,
       tabIndex: 0,
     }
   }
@@ -77,45 +75,37 @@ class Index extends React.Component {
     this.setState({clicked: this.state.clicked ? false : true})
   }
 
-  onRedirect = to => {
-    this.props.history.push(to);
-    this.setState({redirect: true, redirectTo: to});
-  }
-
   handleTabChange = val => {
     this.setState({ tabIndex: val === 0 ? 1 : 0})
   }
 
   render() {
     const {classes} = this.props;
-    const {tabIndex, clicked, redirect, redirectTo, cards} = this.state;
+    const {tabIndex, clicked, cards} = this.state;
 
     return (
-      <>
-        {redirect && <Redirect to={`/${redirectTo}`} /> }
-          <div className={classes.container}>
-            <p className={classes.logo}>meish</p>
-            <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
-              {cards !== undefined ?
-                tabIndex === 0 ?
-                  <CreatedCards cards={cards}/> :
-                  <ReceivedCards />
-                : null
-              }
-            {clicked ?
-                <>
-                  <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
-                    <AddIcon />
-                  </Fab>
-                  <CreateMenu onRedirect={this.onRedirect} />
-                </>
-              :
-                <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton} onClick={this.onClick}>
-                  <AddIcon />
-                </Fab>
-            }
-          </div>
-      </>
+      <div className={classes.container}>
+        <p className={classes.logo}>meish</p>
+        <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
+        {cards !== undefined ?
+            tabIndex === 0 ?
+              <CreatedCards cards={cards}/> :
+              <ReceivedCards />
+            : null
+        }
+        {clicked ?
+          <>
+            <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton + ' ' + classes.active} onClick={this.onClick}>
+              <AddIcon />
+            </Fab>
+            <CreateMenu />
+          </>
+        :
+          <Fab color="primary" aria-label="add" style={{background: 'white'}} className={classes.addButton} onClick={this.onClick}>
+            <AddIcon />
+          </Fab>
+        }
+      </div>
     );
   }
 }

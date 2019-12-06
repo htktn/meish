@@ -71,6 +71,7 @@ class New extends React.Component {
         "content": `${info.content}`,
         "type_id": typeId,
       })
+      return info
     })
     return {
       "informations": infos,
@@ -154,8 +155,6 @@ const TabHeader = withStyles((theme) => ({
   container: {
     background: '#585858',
   },
-  // label: {
-  // }
 }))((props) => {
   const {classes, handleChange, value} = props
   return (
@@ -212,14 +211,14 @@ const ProfileForm = withStyles((theme) => ({
 
 const LayoutSelect = withStyles((theme) => ({
 }))((props) => {
-  const { classes, themes, selectedThemeId, onClick } = props
+  const { themes, selectedThemeId, onClick } = props
   return (
     <div className="tab_theme">
       <div className="theme_list">
         {themes.map(theme => {
           return (
             <div className={['theme', selectedThemeId === theme.id ? 'select' : ''].join(' ')} onClick={(e) => onClick(e, theme.id)}>
-              <img src={`${process.env.PUBLIC_URL}/themes/sample/${theme.id}_sample.jpg`} />
+              <img alt="" src={`${process.env.PUBLIC_URL}/themes/sample/${theme.id}_sample.jpg`} />
               <span>{theme.name}</span>
             </div>
           )
