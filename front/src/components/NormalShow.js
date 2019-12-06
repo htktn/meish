@@ -12,7 +12,7 @@ const NormalShow = withStyles((theme) => ({
   return (
     <div className="normalshow-container">
       <div className="header" type="complete">
-          <p className="back" ><span className="arrow"></span>戻る</p>
+          <p className="back" onClick={onClick}><span className="arrow"></span>戻る</p>
           <p className="logo">meish</p>
         </div>
         <Card card={card} />

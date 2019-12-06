@@ -111,6 +111,11 @@ class New extends React.Component {
     this.setState({ informations })
   }
 
+  onClick = () => {
+    this.props.history.push("/cards");
+    this.setState({ redirect: true });
+  }
+
   render() {
     const { classes } = this.props;
     let { tabIndex, name, kana, role, informations, themes, selectedThemeId, redirect } = this.state;
@@ -125,7 +130,7 @@ class New extends React.Component {
       <div className={classes.container}>
         {redirect && (<Redirect to={{pathname: '/cards/complete', state: this.state}} />)}
         <div className="header" type="new">
-          <p className="back"><span className="arrow"></span>戻る</p>
+          <p className="back" onClick={this.onClick}><span className="arrow"></span>戻る</p>
           <p className="logo">meish</p>
         </div>
         <div className="subHeader">

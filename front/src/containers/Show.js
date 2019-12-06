@@ -21,25 +21,20 @@ class Show extends React.Component {
     }).catch(err => console.log(err))
   }
 
-  // onClick = () => {
-  //   this.props.history.push("/");
-  //   this.setState({ redirect: true });
-  // };
+  onClick = () => {
+    this.props.history.push("/cards");
+    this.setState({ redirect: true });
+  };
 
   render() {
     const { classes } = this.props;
-    let { name, role, kana } = this.state.res
-    // let theme_id = this.state.res.theme_id
+    let { name, role, kana, theme_id, informations } = this.state.res
     let card = {
-      name: "津村光輝",
-      kana: "つむらこうき",
-      role: "Meish株式会社CEO",
-      theme_id: 13,
-      informations: [
-        {'type': 'phone', 'content': '09048338999'},
-        {'type': 'email', 'content': 'koki892jj@gmail.com'},
-        {'type': 'address', 'content': '埼玉県熊谷市熊谷1-9-3 リバーフロント710'},
-      ]
+      name: name,
+      kana: kana,
+      role: role,
+      theme_id: theme_id,
+      informations: informations
     }
     return (
       // <SignedInShow onClick={this.onClick} />
