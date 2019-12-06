@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 
 const WhiteBtn = withStyles((theme) => ({
   btn: {
@@ -17,11 +18,13 @@ const WhiteBtn = withStyles((theme) => ({
     color: '#0FA369'
   }
 }))((props) => {
-  const {classes} = props
+  const {classes, title, to} = props
   return (
-    <div className={classes.btn}>
-      { props.title }
-    </div>
+    <Link to={to} style={{textDecoration: 'none'}}>
+      <div className={classes.btn}>
+        {title}
+      </div>
+    </Link>
   )
 })
 

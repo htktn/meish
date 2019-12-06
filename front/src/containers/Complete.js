@@ -43,9 +43,7 @@ class Complete extends React.Component {
             </div>
           </div>
         </div>
-        <Link to={'/cards'} style={{textDecoration: 'none'}}>
-          <GreenBtn title="名刺の一覧に戻る"  />
-        </Link>
+        <GreenBtn title="名刺の一覧に戻る" to='/cards' />
       </div>
     );
   }
