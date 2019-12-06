@@ -24,12 +24,8 @@ const CreateMenu = withStyles((theme) => ({
   return (
     <div className={classes.modalBack}>
       <div className={classes.createNewBtn}>
-        <Link to='cards/new' style={{textDecoration: 'none'}}>
-          <GreenBtn title="新規プロフィールで作る" />
-        </Link>
-        <Link to='cards/new' style={{textDecoration: 'none'}}>
-          <WhiteBtn title="デフォルトの名刺で作る" />
-        </Link>
+        <GreenBtn title="新規プロフィールで作る" to='cards/new'/>
+        <WhiteBtn title="デフォルトの名刺で作る" to='cards/new'/>
       </div>
     </div>
     )
