@@ -14,7 +14,7 @@ const CreateMenu = withStyles((theme) => ({
     left: '0',
   },
   createNewBtn: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: '100px',
     width: '100%'
   }
