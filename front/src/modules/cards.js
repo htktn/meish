@@ -1,5 +1,3 @@
-import dotenv from 'dotenv'
-
 //for card new
 export const createCard = function(body) {
   return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/cards`, {
@@ -25,7 +23,7 @@ export const createCard = function(body) {
 
 //for card show
 export const getCard = function(id) {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}//cards/${id}`, {
+  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/cards/${id}`, {
     method: 'get',
     credentials: 'include',
     headers: {
@@ -43,7 +41,7 @@ export const getCard = function(id) {
 
 //for user card show. 他の人のカードのshow
 export const getUserCard = function(id) {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}//other_cards/${id}`, {
+  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/other_cards/${id}`, {
     method: 'get',
     credentials: 'include',
     headers: {

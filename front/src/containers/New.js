@@ -218,7 +218,7 @@ const LayoutSelect = withStyles((theme) => ({
         {themes.map(theme => {
           return (
             <div className={['theme', selectedThemeId === theme.id ? 'select' : ''].join(' ')} onClick={(e) => onClick(e, theme.id)}>
-              <img alt="" src={`${process.env.PUBLIC_URL}/themes/sample/${theme.id}_sample.jpg`} />
+              <img alt="" src={`../../public/themes/sample/${theme.id}_sample.jpg`} />
               <span>{theme.name}</span>
             </div>
           )

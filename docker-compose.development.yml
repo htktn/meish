@@ -31,7 +31,7 @@ services:
       - REACT_APP_BACKEND_DOMAIN=$REACT_APP_BACKEND_DOMAIN
     command: [npm, run, start]
     ports:
-      - 8080:3000
+      - 8080:8080
     volumes:
       - ./front:/app
 volumes:

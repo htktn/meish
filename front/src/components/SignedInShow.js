@@ -4,6 +4,9 @@ import QRCode from "qrcode.react"
 import Card from './Card'
 import "../containers/css/header.css";
 import "../containers/css/signedinshow.css";
+import setting from '../../public/icon/setting.png'
+import copyLink from '../../public/icon/link-w.png'
+import share from '../../public/icon/share-w.png'
 
 const SignedInShow = withStyles((theme) => ({
 
@@ -16,7 +19,7 @@ const SignedInShow = withStyles((theme) => ({
           <p className="logo">meish</p>
         </div>
         <div class="card">
-          <img class="setting" src={`${process.env.PUBLIC_URL}/icon/setting.png`} alt="設定" />
+          <img class="setting" src={setting} alt="設定" />
           <Card />
         </div>
         <p className="title">QRコードで共有</p>
@@ -25,11 +28,11 @@ const SignedInShow = withStyles((theme) => ({
         </div>
         <div className="qr-share">
           <div className="qr-share-body">
-            <img src={`${process.env.PUBLIC_URL}/icon/link-w.png`} alt="リンクをコピー" />
+            <img src={copyLink} alt="リンクをコピー" />
             <span>リンクをコピー</span>
           </div>
           <div className="qr-share-body">
-            <img src={`${process.env.PUBLIC_URL}/icon/share-w.png`} alt="その他で共有" />
+            <img src={share} alt="その他で共有" />
             <span>その他で共有</span>
           </div>
         </div>
