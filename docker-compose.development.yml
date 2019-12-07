@@ -34,6 +34,7 @@ services:
       - 8080:8080
     volumes:
       - ./front:/app
+      - /app/node_modules
 volumes:
   bundle_path:
   datavol:
