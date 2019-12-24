@@ -90,7 +90,7 @@ class Index extends React.Component {
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
         {cards !== undefined ?
             tabIndex === 0 ?
-              <CreatedCards cards={cards}/> :
+              <CreatedCards cards={cards} /> :
               <ReceivedCards />
             : null
         }
@@ -107,7 +107,7 @@ class Index extends React.Component {
           </Fab>
         }
       </div>
-    );
+    )
   }
 }
 
@@ -118,11 +118,11 @@ const TabHeader = props => {
         value={value}
         onChange={() => handleChange(value)}
         indicatorColor="primary"
-        textColor="white"
+        textColor="inherit"
         centered
       >
-        <Tab label="作った名刺一覧" />
-        <Tab label="貰った名刺一覧" />
+        <Tab label="作った名刺一覧" key='created'/>
+        <Tab label="貰った名刺一覧" key='received'/>
       </Tabs>
   )
 }
@@ -136,7 +136,7 @@ const CreatedCards= withStyles((theme) => ({
   return (
     <Slide direction='down' in={true} timeout={1000}>
       <div className="tab_mycard">
-        {cards.map((card, i)=> <Card card={card} key={i} />)}
+        {cards.map((card, i) => <Card card={card} key={i} />)}
         <img className="ad-box" src={addMeishi} alt="いろんな名刺を増やせます" />
       </div>
     </Slide>
@@ -155,7 +155,7 @@ const ReceivedCards = props => {
   return (
     <Slide direction='down' in={true} timeout={1000}>
       <div className="tab_mycard">
-        {cards.map((card, i)=> <Card card={card} key={i} />)}
+        {cards.map((card, i) => <Card card={card} key={i} />)}
         <img className="ad-box" src={addMeishi} alt="いろんな名刺を増やせます" />
       </div>
     </Slide>

@@ -26,7 +26,7 @@ const Card = withStyles((theme) => ({
         <span className="name">{name}</span>
         <span className="role">{role}</span>
         {informations.map((info, index) => {
-          return <span className="info" info={index.toString()}><span type={info.type}></span>{info.content}</span>
+          return <span className="info" info={index.toString()} key={index} ><span type={info.type}></span>{info.content}</span>
         })}
       </div>
     </div>
