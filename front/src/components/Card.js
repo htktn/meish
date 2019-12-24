@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 import "../containers/css/card.css";
 
 const Card = withStyles((theme) => ({
@@ -14,22 +15,40 @@ const Card = withStyles((theme) => ({
     fontFamily: 'Roboto',
     fontWeight: 'bold',
   },
-
 }))((props) => {
   const {classes} = props
-  const {name, kana, role, theme_id, informations} = props.card
+  const {name, kana, role, theme_id, informations, id} = props.card
+  const link = props.link
   return (
-    <div className="meishi-outer">
-      <div className="meish-body" theme={theme_id.toString()}>
-        <img src={`${process.env.PUBLIC_URL}/themes/background/${theme_id}_background.jpg`} />
-        <span className="kana">{kana}</span>
-        <span className="name">{name}</span>
-        <span className="role">{role}</span>
-        {informations.map((info, index) => {
-          return <span className="info" info={index.toString()} key={index} ><span type={info.type}></span>{info.content}</span>
-        })}
-      </div>
-    </div>
+    <>
+      {link ?
+        <Link to={`/cards/${id}`}>
+          <div className="meishi-outer">
+            <div className="meish-body" theme={theme_id.toString()}>
+              <img src={`${process.env.PUBLIC_URL}/themes/background/${theme_id}_background.jpg`} />
+              <span className="kana">{kana}</span>
+              <span className="name">{name}</span>
+              <span className="role">{role}</span>
+              {informations.map((info, index) => {
+                return <span className="info" info={index.toString()} key={index} ><span type={info.type}></span>{info.content}</span>
+              })}
+            </div>
+          </div>
+        </Link>
+      :
+        <div className="meishi-outer">
+          <div className="meish-body" theme={theme_id.toString()}>
+            <img src={`${process.env.PUBLIC_URL}/themes/background/${theme_id}_background.jpg`} />
+            <span className="kana">{kana}</span>
+            <span className="name">{name}</span>
+            <span className="role">{role}</span>
+            {informations.map((info, index) => {
+              return <span className="info" info={index.toString()} key={index} ><span type={info.type}></span>{info.content}</span>
+            })}
+          </div>
+        </div>
+      }
+    </>
   )
 })
 

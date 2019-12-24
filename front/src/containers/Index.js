@@ -7,12 +7,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Slide from '@material-ui/core/Fade';
 import Card from '../components/Card'
-import { getAllCards } from '../modules/cards';
+import { getAllBelongingCards, getAllReceivedCards } from '../modules/cards';
 import addMeishi from '../../public/component/add-meishi.png'
 
 import "./css/index.css";
 
-//TODO functional componentにする
 @withStyles(theme => ({
   container: {
     background: 'linear-gradient(203.97deg, rgba(0, 0, 0, 0.7) 0%, #000000 42.95%, rgba(0, 0, 0, 0.8) 99.36%) ',
@@ -67,8 +66,11 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    getAllCards().then(result => {
+    getAllBelongingCards().then(result => {
       this.setState({cards: result})
+    }).catch(err => console.log(err))
+    getAllReceivedCards().then(result => {
+      this.setState({receivedCards: result})
     }).catch(err => console.log(err))
   }
 
@@ -81,17 +83,17 @@ class Index extends React.Component {
   }
 
   render() {
-    const {classes} = this.props;
-    const {tabIndex, clicked, cards} = this.state;
+    const {classes} = this.props
+    const {tabIndex, clicked, cards, receivedCards} = this.state
 
     return (
       <div className={classes.container}>
         <p className={classes.logo}>meish</p>
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader} />
-        {cards !== undefined ?
+        {(cards !== undefined && receivedCards !== undefined) ?
             tabIndex === 0 ?
-              <CreatedCards cards={cards} /> :
-              <ReceivedCards />
+              <Cards cards={cards} /> :
+              <Cards cards={receivedCards} />
             : null
         }
         {clicked ?
@@ -127,39 +129,17 @@ const TabHeader = props => {
   )
 }
 
-//TODO useEffectを使ってcardsをとってこれるようにする
-//TODO CreatedCardsとReceivedCardsはcardsさえ変えれば同じcomponentにできそう(渡す関数だけ変えれば良さそう)
-//TODO placeholderをつけたい
-const CreatedCards= withStyles((theme) => ({
+const Cards = withStyles((theme) => ({
 }))((props) => {
   const {cards} = props
   return (
     <Slide direction='down' in={true} timeout={1000}>
       <div className="tab_mycard">
-        {cards.map((card, i) => <Card card={card} key={i} />)}
+        {cards.map((card, i) => <Card card={card} key={i} link />)}
         <img className="ad-box" src={addMeishi} alt="いろんな名刺を増やせます" />
       </div>
     </Slide>
   )
 })
-
-//TODO useEffectを使ってcardsをとってこれるようにする
-const ReceivedCards = props => {
-  // const { cards } = props
-  const cards = [
-    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "2", informations: [{type:'email', content:'yuya'}]},
-    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "3", informations: [{type: 'email', content:'yuya'}]},
-    {name: "津村光輝", kana: "つむらこうき", role: "カリスマエンジニア", theme_id: "4", informations: [{type: 'email', content:'yuya'}]},
-  ]
-
-  return (
-    <Slide direction='down' in={true} timeout={1000}>
-      <div className="tab_mycard">
-        {cards.map((card, i) => <Card card={card} key={i} />)}
-        <img className="ad-box" src={addMeishi} alt="いろんな名刺を増やせます" />
-      </div>
-    </Slide>
-  )
-}
 
 export default Index

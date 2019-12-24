@@ -1,6 +1,6 @@
 import React from "react";
 import NormalShow from '../components/NormalShow';
-import { getUserCard } from '../modules/cards';
+import { getBelongingCard } from '../modules/cards';
 
 class Show extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Show extends React.Component {
 
   componentDidMount() {
     const id = parseInt(this.props.match.params.id)
-    getUserCard(id).then(result => {
+    getBelongingCard(id).then(result => {
       this.setState({res: result})
     }).catch(err => console.log(err))
   }

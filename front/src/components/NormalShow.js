@@ -21,7 +21,7 @@ const NormalShow = (props) => {
         <Card card={card} />
         <div className="sec01">
           <GreenBtn title="画像をカメラロールに保存する" to='/'/>
-          <p class="message">ログインすると名刺の情報をもっと便利に保存できます</p>
+          <p className="message">ログインすると名刺の情報をもっと便利に保存できます</p>
           <a href="http://localhost:3000/user/auth/twitter/">
             <img className="login-btn01" src={login} alt="ログイン" />
           </a>
