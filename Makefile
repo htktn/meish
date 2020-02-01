@@ -6,6 +6,15 @@ build:
 up:
 	@$(FIG) up
 
+up/back:
+	@$(FIG) back
+
+up/front:
+	@$(FIG) front
+
+up/db:
+	@$(FIG) db
+
 down:
 	@$(FIG) down
 
