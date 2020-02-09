@@ -1,9 +1,10 @@
 default: &default
-  
-development:
   front:
     auth_callback_url:
       twitter: 'http://localhost:8080/cards'
+
+development:
+  <<: *default
 
 test:
   <<: *default
