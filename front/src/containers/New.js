@@ -27,6 +27,7 @@ class New extends React.Component {
     this.state = {
       tabIndex: 0,
       selectedThemeId: 1,
+      selectedThemeName: 'デフォルト',
       redirect: false,
       kana: '',
       name: '',
@@ -101,8 +102,9 @@ class New extends React.Component {
     this.setState({ informations })
   }
 
-  onSelectTheme = (e, id) => {
+  onSelectTheme = (e, id, name) => {
     this.setState({selectedThemeId: id})
+    this.setState({selectedThemeName: name})
   }
 
   onPullTextChange = (e, index) => {
@@ -119,7 +121,7 @@ class New extends React.Component {
 
   render() {
     const { classes } = this.props;
-    let { tabIndex, name, kana, role, informations, themes, selectedThemeId, redirect } = this.state;
+    let { tabIndex, name, kana, role, informations, themes, selectedThemeId, selectedThemeName,redirect } = this.state;
     const card = {
       name: name,
       kana: kana,
@@ -135,7 +137,7 @@ class New extends React.Component {
           <p className="logo">meish</p>
         </div>
         <div className="subHeader">
-          <p className="themeTitle">シンプル1</p>
+          <p className="themeTitle">{selectedThemeName}</p>
           <span className="completeBtn" onClick={this.onSubmit}>完了</span>
         </div>
         <div className={classes.cardWrapper}>
@@ -217,7 +219,7 @@ const LayoutSelect = withStyles((theme) => ({
       <div className="theme_list">
         {themes.map(theme => {
           return (
-            <div className={['theme', selectedThemeId === theme.id ? 'select' : ''].join(' ')} onClick={(e) => onClick(e, theme.id)}>
+            <div className={['theme', selectedThemeId === theme.id ? 'select' : ''].join(' ')} onClick={(e) => onClick(e, theme.id, theme.name)}>
               <img alt="" src={`../../public/themes/sample/${theme.id}_sample.jpg`} />
               <span>{theme.name}</span>
             </div>

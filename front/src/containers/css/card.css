@@ -79,6 +79,6 @@
 }
 
 /* テーマによるフォントカラーの変更 */
-.meish-body[theme="2"],.meish-body[theme="3"],.meish-body[theme="5"],.meish-body[theme="9"],.meish-body[theme="12"],.meish-body[theme="15"],.meish-body[theme="17"],.meish-body[theme="19"] {
+.meish-body[theme="3"],.meish-body[theme="4"],.meish-body[theme="6"],.meish-body[theme="10"],.meish-body[theme="13"],.meish-body[theme="16"],.meish-body[theme="18"],.meish-body[theme="20"] {
   color: white;
 }
