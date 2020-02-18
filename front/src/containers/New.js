@@ -145,7 +145,7 @@ class New extends React.Component {
         </div>
         <TabHeader handleChange={this.handleTabChange} value={tabIndex} className={classes.tabHeader}/>
         {tabIndex === 0 ?
-          <ProfileForm onToggle={this.onToggle} onChange={this.onChange} onPullTextChange={this.onPullTextChange} card={card} /> :
+          <ProfileForm onToggle={this.onToggle} onChange={this.onChange} onPullTextChange={this.onPullTextChange} card={card} onSubmit={this.onSubmit} /> :
           <LayoutSelect themes={themes} selectedThemeId={selectedThemeId} onClick={this.onSelectTheme}/>
         }
       </div>
@@ -178,7 +178,7 @@ const TabHeader = withStyles((theme) => ({
 //TODO placeholderをつけたい
 const ProfileForm = withStyles((theme) => ({
 }))((props) => {
-  const { onPullTextChange, onToggle, onChange, card } = props;
+  const { onPullTextChange, onToggle, onChange, card, onSubmit } = props;
   return (
     <div className="tab_info">
       <span className="message">入力したプロフィールは名刺にすぐに反映されるよ</span>
@@ -206,6 +206,7 @@ const ProfileForm = withStyles((theme) => ({
             </>
           )
         })}
+        <span className="completeBtn" onClick={onSubmit}>完了</span>
       </form>
     </div>
   )
