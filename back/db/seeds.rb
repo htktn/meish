@@ -15,6 +15,9 @@ types.each{|type| Type.create(name: type)}
 Theme.create!(
   [
     {
+      name: 'デフォルト'
+    },
+    {
       name: 'しろにじ'
     },
     {
