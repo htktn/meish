@@ -10,4 +10,6 @@ test:
   <<: *default
 
 production:
-  <<: *default
+  front:
+    auth_callback_url:
+      twitter: 'http://stg.meish:8080/cards'
