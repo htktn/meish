@@ -6,6 +6,15 @@ build:
 up:
 	@$(FIG) up
 
+up/back:
+	@$(FIG) back
+
+up/front:
+	@$(FIG) front
+
+up/db:
+	@$(FIG) db
+
 down:
 	@$(FIG) down
 
@@ -38,8 +47,9 @@ back/gemlist:
 back/mock:
 	npx json-server back/mock.json -p 3003
 
-back/env:
-	cp back/.env.sample back/.env
+env:
+	cp .env.example .env
+	cp front/.env.example front/.env
 
 migrate/up:
 	@$(FIG) run back bundle exec rails db:migrate
