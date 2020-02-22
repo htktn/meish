@@ -5,77 +5,49 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+unless Service.exists?
+  Service.create!(
+    [
+      {provider: 'twitter'},
+      {provider: 'facebook'}
+    ]
+  )
+end
 
-services = ['twitter', 'facebook']
-services.each{|service| Service.create(provider: service)}
+unless Type.exists?
+  Type.create!(
+    [
+      {name: 'email'},
+      {name: 'phone_number'},
+      {name: 'address'}
+    ]
+  )
+end
 
-types = ['email', 'phone_number', 'address']
-types.each{|type| Type.create(name: type)}
-
-Theme.create!(
-  [
-    {
-      name: 'デフォルト'
-    },
-    {
-      name: 'しろにじ'
-    },
-    {
-      name: 'くろ'
-    },
-    {
-      name: 'あお'
-    },
-    {
-      name: 'きいろ'
-    },
-    {
-      name: 'あか'
-    },
-    {
-      name: 'みどり'
-    },
-    {
-      name: 'みずツートン'
-    },
-    {
-      name: 'しずく'
-    },
-    {
-      name: 'ビビット黒'
-    },
-    {
-      name: 'ビビット'
-    },
-    {
-      name: 'パソコン'
-    },
-    {
-      name: 'いぬ'
-    },
-    {
-      name: 'ねこ'
-    },
-    {
-      name: 'あおぞら'
-    },
-    {
-      name: 'こうもり'
-    },
-    {
-      name: 'スプラッシュ'
-    },
-    {
-      name: 'よるのほし'
-    },
-    {
-      name: 'うみべ'
-    },
-    {
-      name: 'タブ'
-    },
-    {
-      name: '宝石'
-    }
-  ]
-)
+unless Theme.exists?
+  Theme.create!(
+    [
+      {name: 'デフォルト'},
+      {name: 'しろにじ'},
+      {name: 'くろ'},
+      {name: 'あお'},
+      {name: 'きいろ'},
+      {name: 'あか'},
+      {name: 'みどり'},
+      {name: 'みずツートン'},
+      {name: 'しずく'},
+      {name: 'ビビット黒'},
+      {name: 'ビビット'},
+      {name: 'パソコン'},
+      {name: 'いぬ'},
+      {name: 'ねこ'},
+      {name: 'あおぞら'},
+      {name: 'こうもり'},
+      {name: 'スプラッシュ'},
+      {name: 'よるのほし'},
+      {name: 'うみべ'},
+      {name: 'タブ'},
+      {name: '宝石'}
+    ]
+  )
+end
