@@ -18,7 +18,7 @@ class Login extends React.Component {
       <div className="lp-comntainer">
         <div className="sec01">
           <img src={background} alt="もっと簡単に名刺を交換できればもっと広がる" />
-          <a href="http://stg.meish.jp:3000/user/auth/twitter/">
+          <a href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/user/auth/twitter/`}>
             <img className="login-btn01" src={login} alt="ログイン" />
           </a>
         </div>
