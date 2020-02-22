@@ -11,10 +11,15 @@ services:
       - datavol:/var/lib/mysql
   back:
     build: back/
+    image: takoyaki0316/meish_back
     container_name: meish_back
     environment:
       - BUNDLE_PATH=/bundle
       - RAILS_ENV=production
+      - TWITTER_KEY=$TWITTER_KEY
+      - TWITTER_SECRET=$TWITTER_SECRET
+      - SECRET_KEY_BASE=$SECRET_KEY_BASE
+      - RAILS_LOG_TO_STDOUT=$RAILS_LOG_TO_STDOUT
     command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./back:/app
@@ -26,14 +31,16 @@ services:
       - db
   front:
     build: front/
+    image: takoyaki0316/meish_front
     container_name: meish_front
     environment:
       - NODE_ENV=production
     command: [npm, run, start]
     ports:
-      - 8080:3000
+      - 8080:8080
     volumes:
       - ./front:/app
+      - /app/node_modules
 volumes:
   bundle_path:
   datavol:

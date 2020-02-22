@@ -20,6 +20,8 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
+  config.secret_key = '1550c960945341b3e876602e3ec095d488e3df35cb3144acbd14ded954914b3febe4d4df8367a0e56a681b15a0f8f546d4cf02f2fcadeed8d1b031bc37e76ac1'
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
@@ -261,8 +263,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  OAUTH_CONFIG = YAML.load(ERB.new(IO.read("#{Rails.root}/config/omniauth.yml.erb")).result)[Rails.env].symbolize_keys!
-  config.omniauth :twitter, OAUTH_CONFIG[:twitter]['key'], OAUTH_CONFIG[:twitter]['secret'], callback_url: 'http://localhost:3000/user/auth/twitter/callback'
+  OAUTH_CONFIG = YAML.load(ERB.new(IO.read("#{Rails.root}/config/omniauth.yml")).result)[Rails.env].symbolize_keys!
+  config.omniauth :twitter, OAUTH_CONFIG[:twitter]['key'], OAUTH_CONFIG[:twitter]['secret']
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

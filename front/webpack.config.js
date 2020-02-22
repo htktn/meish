@@ -15,6 +15,7 @@ module.exports = {
     host: '0.0.0.0',
     port: 8080,
     watchContentBase: true,
+    disableHostCheck: true
   },
   node: {
     fs: 'empty'
