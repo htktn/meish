@@ -51,6 +51,21 @@
   border: none;
 }
 
+.tab_info span.completeBtn {
+  margin-top: 30px;
+  display: inline-block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.03em;
+  color: #0FA369;
+  background: white;
+  padding: 8px 17px;
+  border-radius: 19px;
+}
+
 .tab_info .explain {
   font-family: Roboto;
   font-style: normal;
