@@ -46,8 +46,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - name: Run tests
-        run: gem install bundler
+      - name: Build and test with Rake
+        env:
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          bundle exec rails test
       - name: Run tests
         run: |
           bundle exec rspec --color
