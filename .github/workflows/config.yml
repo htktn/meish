@@ -1,28 +1,51 @@
-name: Test
+name: CI
 
 on: 
   push:
 
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [8.x]
-
     steps:
-    - uses: actions/checkout@v1
-
-jobs:
-  build:
-    name: Deploy
+      - uses: actions/checkout@v1
+      - name: Use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Yarn install, build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build  
+  run_back_tests:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [8.x]
-
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
+      - name: Use ruby ${{ matrix.ruby }}
+        uses: actions/setup-node@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Npm run tests
+        run: |
+          bundle exec rspec --color
+        working-directory: ./back
+  run_front_tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Npm run tests
+        run: |
+          npm run tests
+    
