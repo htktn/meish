@@ -14,3 +14,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
+on: 
+  push:
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x]
+
+    steps:
+    - uses: actions/checkout@v1
