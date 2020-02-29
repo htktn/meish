@@ -39,11 +39,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: [2.6]
+        ruby: [ '2.5', '2.6' ]
     steps:
       - uses: actions/checkout@v1
-      - name: Use ruby ${{ matrix.ruby }}
-        uses: actions/setup-ruby@v1
+      - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Build and test with Rake
