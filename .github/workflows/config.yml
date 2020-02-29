@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [2.6]
+        ruby-version: [2.6]
     steps:
       - uses: actions/checkout@v1
       - name: Use ruby ${{ matrix.ruby }}
