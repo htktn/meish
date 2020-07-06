@@ -65,7 +65,7 @@ jobs:
           RAILS_ENV: test
           DB_USERNAME: root
           DB_PASSWORD: password
-          DB_HOST: mysql
+          DB_HOST: meish_test_db
         working-directory: ./back
       - name: Run tests
         run: |
@@ -74,5 +74,5 @@ jobs:
           RAILS_ENV: test
           DB_USERNAME: root
           DB_PASSWORD: password
-          DB_HOST: localhost
+          DB_HOST: meish_test_db
         working-directory: ./back
