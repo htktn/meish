@@ -37,20 +37,35 @@ jobs:
         working-directory: ./front
   run_back_tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby: [ '2.5', '2.6' ]
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: password
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
-      - name: Build and test with Rake
+          ruby-version: 2.6
+      - name: Install bundler
+        run : gem install bundler:2.0.2
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get -y install default-mysql-client curl
+      - name: Run migration
+        run:
+        command: |
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:structure:load RAILS_ENV=test
+          RAILS_ENV=test bin/fast_seed
+      - name: Run tests
         env:
           RAILS_ENV: test
+          DB_USERNAME: root
+          DB_PASSWORD: password
+          DB_HOST: localhost
         run: |
-          sudo apt-get -yqq install libpq-dev
-          gem install bundler
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create
           bundle exec rails db:migrate
