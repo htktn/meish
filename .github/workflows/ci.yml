@@ -54,7 +54,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get -y install default-mysql-client curl
-          bundle install --jobs 4 --retry 3
+      - name: Bundle install
+        run: bundle install --jobs 4 --retry 3
+        working-directory: ./back
       - name: Run migration
         run: |
           bundle exec rails db:create
