@@ -5,16 +5,16 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV.fetch("DB_USERNAME") { root } %>
   password: <%= ENV.fetch("DB_PASSWORD") { password } %>
-  host: <%= ENV.fetch("DB_HOST") { db } %>
+  host: <%= ENV.fetch("DB_HOST") { localhost } %>
 
 development:
   <<: *default
-  database: back_development
+  database: meish_development
 
 test:
   <<: *default
-  database: back_test
+  database: meish_test
 
 production:
   <<: *default
-  database: back_production
+  database: meish_production
