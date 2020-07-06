@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  build:
+  front_build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -26,6 +26,7 @@ jobs:
     strategy:
       matrix:
         node-version: [8.x]
+    needs: front_build
     steps:
       - uses: actions/checkout@v1
       - name: Use node.js ${{ matrix.node-version }}
@@ -51,8 +52,8 @@ jobs:
         run: gem install bundler:2.0.2
       - name: Install dependencies
         run: |
-          apt-get update
-          apt-get -y install default-mysql-client curl
+          sudo apt-get update
+          sudo apt-get -y install default-mysql-client curl
       - name: Run migration
         run: |
           bundle exec rails db:create RAILS_ENV=test
