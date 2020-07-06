@@ -65,18 +65,14 @@ jobs:
           RAILS_ENV: test
           DB_USERNAME: root
           DB_PASSWORD: password
-          DB_HOST: localhost
+          DB_HOST: mysql
         working-directory: ./back
       - name: Run tests
         run: |
-          bundle exec rails test
+          bundle exec rspec --color
         env:
           RAILS_ENV: test
           DB_USERNAME: root
           DB_PASSWORD: password
           DB_HOST: localhost
-        working-directory: ./back
-      - name: Run tests
-        run: |
-          bundle exec rspec --color
         working-directory: ./back
