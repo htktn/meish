@@ -9,8 +9,8 @@ services:
       MYSQL_DATABASE: root
     volumes:
       - datavol:/var/lib/mysql
-  back:
-    build: back/
+  web:
+    build: web/
     image: takoyaki0316/meish_back
     container_name: meish_back
     environment:
@@ -22,15 +22,15 @@ services:
       - RAILS_LOG_TO_STDOUT=$RAILS_LOG_TO_STDOUT
     command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - ./back:/app
-      - ./back/vendor/bundle:/app/vendor/bundle
+      - ./web:/app
+      - ./web/vendor/bundle:/app/vendor/bundle
       - bundle_path:/bundle
     ports:
       - 3000:3000
     depends_on:
       - db
   front:
-    build: front/
+    build: frontend/
     image: takoyaki0316/meish_front
     container_name: meish_front
     environment:

@@ -44,9 +44,9 @@ $ make down # remove container
 ```sh
 $ make migrate/up # => rails db:migrate
 $ make console # => rails c
-$ make back/install # => bundle install
+$ make web/install # => bundle install
 
-$ make back/shell # コンテナに入る
+$ make web/shell # コンテナに入る
 
 # その他コマンド
 # e.g.
@@ -60,7 +60,7 @@ $ docker-compose run back bundle exec rails g model Hoge
 frontendはmake upし直さなくても変更が反映されるはず。
 
 ```sh
-$ make front/shell # コンテナに入る
+$ make frontend/shell # コンテナに入る
 
 # その他コマンド
 # e.g.
@@ -85,14 +85,14 @@ $ docker-compose logs -ft db # dbのログ
 ### APIのmock
 
 ```sh
-$ make back/mock # mockサーバー起動　常時必要なわけではなさそうなので、必要な時だけ起動してください
+$ make web/mock # mockサーバー起動　常時必要なわけではなさそうなので、必要な時だけ起動してください
 ```
 
 下記のURLでmockの一覧が見られます。
 
 http://localhost:3003/ 
 
-mockを追加したい時は、[こちらのリンク](https://qiita.com/Lurium/items/313f8f770a710b5ed188)を参考にしてback/mock.jsonに必要なjsonを追加してください。
+mockを追加したい時は、[こちらのリンク](https://qiita.com/Lurium/items/313f8f770a710b5ed188)を参考にしてweb/mock.jsonに必要なjsonを追加してください。
 
 ## 本番環境への移行
 
