@@ -17,7 +17,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Yarn install, build
         run: |
-          yarn cache clean
           yarn install --frozen-lockfile
           yarn build
         working-directory: ./front
@@ -37,6 +36,10 @@ jobs:
         run: echo test
         working-directory: ./front
   run_back_tests:
+    env:
+      RAILS_ENV: test
+      DB_USERNAME: root
+      DB_PASSWORD: password
     runs-on: ubuntu-latest
     services:
       mysql:
@@ -64,18 +67,8 @@ jobs:
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
-        env:
-          RAILS_ENV: test
-          DB_USERNAME: root
-          DB_PASSWORD: password
-          DB_HOST: 127.0.0.1
         working-directory: ./back
       - name: Run tests
         run: |
           bundle exec rspec --color
-        env:
-          RAILS_ENV: test
-          DB_USERNAME: root
-          DB_PASSWORD: password
-          DB_HOST: 127.0.0.1
         working-directory: ./back
