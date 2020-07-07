@@ -43,12 +43,17 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: password
+          ports:
+            - "3306:3306"
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6
+      - name: Verify MySQL connection from host
+        run: |
+          mysql --host 127.0.0.1 --port 3306 -uroot -ppassword -e "SHOW GRANTS FOR 'root'@'localhost'"
       - name: Install bundler
         run: gem install bundler:2.0.2
       - name: Install dependencies
@@ -66,7 +71,7 @@ jobs:
           RAILS_ENV: test
           DB_USERNAME: root
           DB_PASSWORD: password
-          DB_HOST: mysql
+          DB_HOST: 127.0.0.1
         working-directory: ./back
       - name: Run tests
         run: |
@@ -75,5 +80,5 @@ jobs:
           RAILS_ENV: test
           DB_USERNAME: root
           DB_PASSWORD: password
-          DB_HOST: mysql
+          DB_HOST: 127.0.0.1
         working-directory: ./back
