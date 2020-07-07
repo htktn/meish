@@ -1,6 +1,6 @@
 //for card new
 export const createCard = function(body) {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/cards`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/cards`, {
     credentials: 'include',
     method: 'post', 
     body: JSON.stringify(body),
@@ -23,7 +23,7 @@ export const createCard = function(body) {
 
 //for card show
 export const getBelongingCard = function(id) {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/cards/${id}`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/cards/${id}`, {
     method: 'get',
     credentials: 'include',
     headers: {
@@ -41,7 +41,7 @@ export const getBelongingCard = function(id) {
 
 //for user card show. 他の人のカードのshow
 export const getReceivedCard = function(id) {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/other_cards/${id}`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/other_cards/${id}`, {
     method: 'get',
     credentials: 'include',
     headers: {
@@ -59,7 +59,7 @@ export const getReceivedCard = function(id) {
 
 //for card index 
 export const getAllBelongingCards = function() {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/cards`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/cards`, {
     method: 'get',
     credentials: 'include',
     headers: {
@@ -77,7 +77,7 @@ export const getAllBelongingCards = function() {
 
 //for user card index. ユーザーが交換したカード一覧用
 export const getAllReceivedCards = function() {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/other_cards`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/other_cards`, {
     method: 'get',
     credentials: 'include',
     headers: {
@@ -95,7 +95,7 @@ export const getAllReceivedCards = function() {
 
 //PUT /cards/:id
 export const updateCard = function(id, body) {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/cards/${id}`, { method: 'put', body: JSON.stringify(body) })
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/cards/${id}`, { method: 'put', body: JSON.stringify(body) })
   .then(res => {
     if (res.ok) {
       return res.json();
@@ -107,7 +107,7 @@ export const updateCard = function(id, body) {
 
 //DELETE /cards/:id
 export const deleteCard = function(id) {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/cards/${id}`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/cards/${id}`, {
     method: 'delete',
   }).then(res => {
     if (res.ok) {
@@ -120,7 +120,7 @@ export const deleteCard = function(id) {
 
 //GET /themes
 export const getThemes = function() {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/themes`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/themes`, {
     credentials: 'include',
     method: 'get',
   }).then(res => {
@@ -135,7 +135,7 @@ export const getThemes = function() {
 
 //GET /types
 export const getTypes = function() {
-  return fetch(`http://${process.env.REACT_APP_BACKEND_DOMAIN}/types`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/types`, {
     method: 'get',
   }).then(res => {
     if (res.ok) {

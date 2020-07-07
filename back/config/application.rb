@@ -33,7 +33,7 @@ module Api
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         # 許可するドメイン
-        origins "localhost:8080"
+        origins "localhost:8080",'http://stg.meish.jp:8080'
         # 許可するヘッダとメソッドの種類
         resource "*",
           headers: :any,

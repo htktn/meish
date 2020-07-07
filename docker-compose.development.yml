@@ -14,6 +14,8 @@ services:
     container_name: meish_back
     environment:
       - BUNDLE_PATH=/bundle
+      - TWITTER_KEY=$TWITTER_KEY
+      - TWITTER_SECRET=$TWITTER_SECRET
     command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./back:/app
@@ -28,7 +30,6 @@ services:
     container_name: meish_front
     environment:
       - NODE_ENV=production
-      - REACT_APP_BACKEND_DOMAIN=$REACT_APP_BACKEND_DOMAIN
     command: [npm, run, start]
     ports:
       - 8080:8080
