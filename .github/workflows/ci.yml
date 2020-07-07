@@ -15,7 +15,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
-        working-directory: ./front
+        working-directory: ./frontend
   run_front_tests:
     runs-on: ubuntu-latest
     needs: build_front
@@ -27,7 +27,7 @@ jobs:
       - name: Npm run tests
         # TODO: run tests
         run: echo test
-        working-directory: ./front
+        working-directory: ./frontend
   run_back_tests:
     env:
       RAILS_ENV: test
@@ -56,13 +56,13 @@ jobs:
           sudo apt-get -y install default-mysql-client curl
       - name: Bundle install
         run: bundle install --jobs 4 --retry 3
-        working-directory: ./back
+        working-directory: ./web
       - name: Run migration
         run: |
           bundle exec rails db:create
           bundle exec rails db:migrate
-        working-directory: ./back
+        working-directory: ./web
       - name: Run tests
         run: |
           bundle exec rspec --color
-        working-directory: ./back
+        working-directory: ./web

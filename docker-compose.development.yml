@@ -34,7 +34,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./front:/app
+      - ./frontend:/app
       - /app/node_modules
 volumes:
   bundle_path:
