@@ -51,10 +51,6 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6
-      - name: Verify MySQL connection from host
-        run: |
-          sudo apt-get install -y mysql-client libmysqlclient-dev
-          mysql --host 127.0.0.1 --port 3306 -uroot -ppassword -e "SHOW GRANTS FOR 'root'@'localhost'"
       - name: Install bundler
         run: gem install bundler:2.0.2
       - name: Install dependencies
