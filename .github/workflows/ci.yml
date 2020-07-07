@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [8.x]
+        node-version: [10.16.0]
     steps:
       - uses: actions/checkout@v1
       - name: Use node.js ${{ matrix.node-version }}
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [8.x]
+        node-version: [10.16.0]
     needs: front_build
     steps:
       - uses: actions/checkout@v1
@@ -40,6 +40,7 @@ jobs:
       RAILS_ENV: test
       DB_USERNAME: root
       DB_PASSWORD: password
+      DB_HOST: 127.0.0.1
     runs-on: ubuntu-latest
     services:
       mysql:
