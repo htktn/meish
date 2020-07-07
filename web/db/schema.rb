@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(version: 2019_10_20_014051) do
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "default_card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "default_card_id"
     t.string "access_token"
     t.index ["default_card_id"], name: "index_users_on_default_card_id"
   end
