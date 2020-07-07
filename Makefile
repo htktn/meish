@@ -47,6 +47,9 @@ back/gemlist:
 back/mock:
 	npx json-server back/mock.json -p 3003
 
+back/test:
+	@$(FIG) run back bundle exec rspec
+
 env:
 	cp .env.example .env
 	cp front/.env.example front/.env

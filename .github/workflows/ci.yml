@@ -1,0 +1,68 @@
+name: CI
+
+on: 
+  push:
+
+jobs:
+  build_front:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.16.0
+      - name: Yarn install, build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+        working-directory: ./front
+  run_front_tests:
+    runs-on: ubuntu-latest
+    needs: build_front
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.16.0
+      - name: Npm run tests
+        # TODO: run tests
+        run: echo test
+        working-directory: ./front
+  run_back_tests:
+    env:
+      RAILS_ENV: test
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_HOST: 127.0.0.1
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - "3306:3306"
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        env:
+          MYSQL_ROOT_PASSWORD: password
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - name: Install bundler
+        run: gem install bundler:2.0.2
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install default-mysql-client curl
+      - name: Bundle install
+        run: bundle install --jobs 4 --retry 3
+        working-directory: ./back
+      - name: Run migration
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+        working-directory: ./back
+      - name: Run tests
+        run: |
+          bundle exec rspec --color
+        working-directory: ./back
