@@ -4,17 +4,13 @@ on:
   push:
 
 jobs:
-  front_build:
+  build_front:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.16.0]
     steps:
       - uses: actions/checkout@v1
-      - name: Use node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 10.16.0
       - name: Yarn install, build
         run: |
           yarn install --frozen-lockfile
@@ -22,17 +18,14 @@ jobs:
         working-directory: ./front
   run_front_tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.16.0]
     needs: front_build
     steps:
       - uses: actions/checkout@v1
-      - name: Use node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 10.16.0
       - name: Npm run tests
+        # TODO: run tests
         run: echo test
         working-directory: ./front
   run_back_tests:
