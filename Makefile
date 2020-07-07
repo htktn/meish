@@ -6,10 +6,10 @@ build:
 up:
 	@$(FIG) up
 
-up/back:
+up/web:
 	@$(FIG) back
 
-up/front:
+up/frontend:
 	@$(FIG) front
 
 up/db:
@@ -32,35 +32,35 @@ setup:
 	@$(FIG) run back bundle exec rails db:migrate
 	@$(FIG) run back bundle exec rails db:seed
 
-back/console:
+web/console:
 	@$(FIG) run back bundle exec rails console
 
-back/shell:
+web/shell:
 	@$(FIG) run back /bin/bash
 
-back/install:
+web/install:
 	@$(FIG) run back bundle install
 
-back/gemlist:
+web/gemlist:
 	@$(FIG) run back bundle exec gem list
 
-back/mock:
-	npx json-server back/mock.json -p 3003
+web/mock:
+	npx json-server web/mock.json -p 3003
 
-back/test:
+web/test:
 	@$(FIG) run back bundle exec rspec
 
 env:
 	cp .env.example .env
-	cp front/.env.example front/.env
+	cp frontend/.env.example frontend/.env
 
 migrate/up:
 	@$(FIG) run back bundle exec rails db:migrate
 
-front/shell:
+frontend/shell:
 	@$(FIG) run front /bin/sh
 
-front/install:
+frontend/install:
 	@$(FIG) run front npm install
 
 mysql:
