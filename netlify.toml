@@ -1,2 +1,13 @@
-[build] 
-  base    = "frontend/"
+[build]
+  publish = "/dist"
+
+[context.production]
+  command = "yarn && yarn build:production"
+
+[context.staging]
+  command = "yarn && yarn build:development"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
