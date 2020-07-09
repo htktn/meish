@@ -1,5 +1,6 @@
 [build]
-  publish = "/dist"
+  base = "frontend/"
+  publish = "dist"
 
 [context.production]
   command = "yarn && yarn build:production"
