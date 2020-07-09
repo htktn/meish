@@ -9,6 +9,6 @@
   command = "yarn && yarn build:development"
 
 [[redirects]]
-  from = "/*"
+  from = "/dist/*"
   to = "/index.html"
   status = 200
