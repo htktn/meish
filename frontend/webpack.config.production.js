@@ -43,7 +43,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new Dotenv({path: './.env'}),
+    new Dotenv({path: './.env.production'}),
     new HtmlWebpackPlugin({
       template: './public/index.html'
     })
