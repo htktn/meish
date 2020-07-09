@@ -22,13 +22,13 @@ const NormalShow = (props) => {
         <div className="sec01">
           <GreenBtn title="画像をカメラロールに保存する" to='/'/>
           <p className="message">ログインすると名刺の情報をもっと便利に保存できます</p>
-          <a href="http://localhost:3000/user/auth/twitter/">
+          <a href={`${process.env.REACT_APP_BACKEND_URL}/user/auth/twitter/`}>
             <img className="login-btn01" src={login} alt="ログイン" />
           </a>
         </div>
         <div className="sec02">
           <img className="image1" src={image1} alt="もっと早く簡単に名刺を交換できればもっと広がる" />
-          <a href="http://localhost:3000/user/auth/twitter/">
+          <a href={`${process.env.REACT_APP_BACKEND_URL}/user/auth/twitter/`}>
             <img className="login-btn02" src={login} alt="ログイン" />
           </a>
         </div>

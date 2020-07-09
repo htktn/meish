@@ -17,9 +17,11 @@
     "react-slick": "^0.25.2"
   },
   "scripts": {
-    "start": "webpack-dev-server",
-    "prod": "webpack-dev-server --mode production",
-    "build": "webpack --mode production"
+    "start": "webpack-dev-server --config webpack.config.local.js",
+    "start:development": "webpack-dev-server --config webpack.config.development.js",
+    "start:production": "webpack-dev-server --mode production --config webpack.config.production.js",
+    "build:development": "webpack --mode production --config webpack.config.development.js",
+    "build:production": "webpack --mode production --config webpack.config.production.js"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",

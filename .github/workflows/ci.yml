@@ -14,7 +14,8 @@ jobs:
       - name: Yarn install, build
         run: |
           yarn install --frozen-lockfile
-          yarn build
+          yarn build:development
+          yarn build:production
         working-directory: ./frontend
   run_front_tests:
     runs-on: ubuntu-latest

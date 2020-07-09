@@ -12,4 +12,4 @@ test:
 production:
   front:
     auth_callback_url:
-      twitter: "http://localhost:8080/cards"
+      twitter: <%= ENV.fetch("FRONTEND_URL") { 'http://localhost:8080/cards' } %>

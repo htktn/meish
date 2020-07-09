@@ -1,4 +1,4 @@
 [build] 
   base    = "frontend/"
   publish = "dist"
-  command = "cp .env.example .env && npm run build"
+  command = "npm run build:development"
