@@ -1,7 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include ActionController::Cookies
 
-  ENDPOINTS = YAML.load_file("#{Rails.root}/config/endpoint.yml")[Rails.env].symbolize_keys!
+  ENDPOINTS = YAML.load(ERB.new(IO.read("#{Rails.root}/config/endpoint.yml")).result)[Rails.env].symbolize_keys!
 
   def twitter; basic_action; end
 
