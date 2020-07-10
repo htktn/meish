@@ -19,5 +19,7 @@ $ docker-compose up web
 ```
 
 # Core Team
-- @TaKO8Ki
-- @tsmrkk
+- [@tsmrkk](https://github.com/tsmrkk)
+- [@yuya-inagaki](https://github.com/yuya-inagaki)
+- [@hinako1222m](https://github.com/hinako1222m)
+- [@TaKO8Ki](https://github.com/TaKO8Ki)
