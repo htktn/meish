@@ -16,6 +16,9 @@ services:
       - BUNDLE_PATH=/bundle
       - TWITTER_KEY=$TWITTER_KEY
       - TWITTER_SECRET=$TWITTER_SECRET
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - DB_HOST=db
     command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - ./web:/app
@@ -25,17 +28,6 @@ services:
       - 3000:3000
     depends_on:
       - db
-  frontend:
-    build: frontend/
-    container_name: meish_front
-    environment:
-      - NODE_ENV=production
-    command: [npm, run, start]
-    ports:
-      - 8080:8080
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
 volumes:
   bundle_path:
   datavol:
