@@ -6,15 +6,6 @@ build:
 up:
 	@$(FIG) up
 
-up/web:
-	@$(FIG) web
-
-up/frontend:
-	@$(FIG) frontend
-
-up/db:
-	@$(FIG) db
-
 down:
 	@$(FIG) down
 
