@@ -1,7 +1,7 @@
 <div align="center">
   <br>
   <img alt="meish" src="https://user-images.githubusercontent.com/41065217/87132439-d2922280-c2d0-11ea-92e8-e0d411b651b1.png" width="500px">
-  <h1>meish</h1>
+  <h1><a href="https://meish.jp">meish</a></h1>
   <strong>Where you share and customize your profile</strong>
 </div>
 <br>
@@ -15,7 +15,20 @@
 
 ```sh
 $ make setup
-$ docker-compose up web
+$ make up
+
+# /frontend
+$ yarn start
+```
+
+# Contribution
+
+```sh
+# enter mysql console
+$ make mysql
+
+# enter rails console
+$ make web/console
 ```
 
 # Core Team
