@@ -6,15 +6,6 @@ build:
 up:
 	@$(FIG) up
 
-up/web:
-	@$(FIG) web
-
-up/frontend:
-	@$(FIG) frontend
-
-up/db:
-	@$(FIG) db
-
 down:
 	@$(FIG) down
 
@@ -52,7 +43,7 @@ web/test:
 
 env:
 	cp .env.example .env
-	cp frontend/.env.example frontend/.env
+	cp frontend/.env.example frontend/.env.local
 
 migrate/up:
 	@$(FIG) run web bundle exec rails db:migrate

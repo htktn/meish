@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-  devise :database_authenticatable,
-  :recoverable, :rememberable, :validatable,
-  :timeoutable, :omniauthable, omniauth_providers: [:twitter]
+  devise :database_authenticatable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
   
   has_many :social_profiles, dependent: :destroy
   has_many :user_cards, dependent: :destroy
