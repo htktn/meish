@@ -52,7 +52,7 @@ web/test:
 
 env:
 	cp .env.example .env
-	cp frontend/.env.example frontend/.env
+	cp frontend/.env.example frontend/.env.local
 
 migrate/up:
 	@$(FIG) run back bundle exec rails db:migrate
