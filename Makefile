@@ -7,10 +7,10 @@ up:
 	@$(FIG) up
 
 up/web:
-	@$(FIG) back
+	@$(FIG) web
 
 up/frontend:
-	@$(FIG) front
+	@$(FIG) frontend
 
 up/db:
 	@$(FIG) db
@@ -27,41 +27,41 @@ clean:
 	@docker volume prune
 
 setup:
-	@$(FIG) run back bundle install
-	@$(FIG) run back bundle exec rails db:create
-	@$(FIG) run back bundle exec rails db:migrate
-	@$(FIG) run back bundle exec rails db:seed
+	@$(FIG) run web bundle install
+	@$(FIG) run web bundle exec rails db:create
+	@$(FIG) run web bundle exec rails db:migrate
+	@$(FIG) run web bundle exec rails db:seed
 
 web/console:
-	@$(FIG) run back bundle exec rails console
+	@$(FIG) run web bundle exec rails console
 
 web/shell:
-	@$(FIG) run back /bin/bash
+	@$(FIG) run web /bin/bash
 
 web/install:
-	@$(FIG) run back bundle install
+	@$(FIG) run web bundle install
 
 web/gemlist:
-	@$(FIG) run back bundle exec gem list
+	@$(FIG) run web bundle exec gem list
 
 web/mock:
 	npx json-server web/mock.json -p 3003
 
 web/test:
-	@$(FIG) run back bundle exec rspec
+	@$(FIG) run web bundle exec rspec
 
 env:
 	cp .env.example .env
 	cp frontend/.env.example frontend/.env
 
 migrate/up:
-	@$(FIG) run back bundle exec rails db:migrate
+	@$(FIG) run web bundle exec rails db:migrate
 
 frontend/shell:
-	@$(FIG) run front /bin/sh
+	@$(FIG) run frontend /bin/sh
 
 frontend/install:
-	@$(FIG) run front npm install
+	@$(FIG) run frontend npm install
 
 mysql:
 	docker exec -it meish_db mysql -u root -ppassword
