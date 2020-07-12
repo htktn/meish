@@ -6,8 +6,8 @@
 </div>
 <br>
 <p align="center">
-  <a href="https://www.ruby-lang.org/en/">
-    <img src="https://img.shields.io/github/workflow/status/htktn/meish/CI/master?style=plastic" alt="workflow status">
+  <a href="https://github.com/htktn/meish/actions">
+    <img src="https://img.shields.io/github/workflow/status/htktn/meish/CI/master?logo=github" alt="workflow status">
   </a>
 </p>
 
