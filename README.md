@@ -36,7 +36,3 @@ $ make web/console
 - [@yuya-inagaki](https://github.com/yuya-inagaki)
 - [@hinako1222m](https://github.com/hinako1222m)
 - [@TaKO8Ki](https://github.com/TaKO8Ki)
-
-# License
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Please see the [LICENSE](./LICENSE) file in our repository for the full text.
