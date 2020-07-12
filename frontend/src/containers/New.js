@@ -144,7 +144,7 @@ class New extends React.Component {
         typeId = 3
       }
       infos.push({
-        "content": `${info.content}`,
+        "content": `${this.converZenkakuToHankaku(info.content)}`,
         "type_id": typeId,
       })
       return info
