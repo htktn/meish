@@ -34,5 +34,5 @@ $ make web/console
 # Core Team
 - [@tsmrkk](https://github.com/tsmrkk)
 - [@yuya-inagaki](https://github.com/yuya-inagaki)
-- [@hinako1222m](https://github.com/hinako1222m)
+- [@hinako1222](https://github.com/hinako1222)
 - [@TaKO8Ki](https://github.com/TaKO8Ki)
