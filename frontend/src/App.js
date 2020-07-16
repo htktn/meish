@@ -11,18 +11,16 @@ import Edit from './containers/Edit';
 export default class App extends React.Component {
   render() {
     return (
-      <div>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Lp} />
-            <Route exact path="/cards" component={Index} />
-            <Route path="/cards/new" component={New} />
-            <Route path="/cards/:id/edit" component={Edit} />
-            <Route path="/cards/complete" component={Complete} />
-            <Route path="/cards/:id" component={Show} />
-          </Switch>
-        </Router>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Lp} />
+          <Route exact path="/cards" component={Index} />
+          <Route path="/cards/new" component={New} />
+          <Route path="/cards/:id/edit" component={Edit} />
+          <Route path="/cards/complete" component={Complete} />
+          <Route path="/cards/:id" component={Show} />
+        </Switch>
+      </Router>
     );
   }
 }

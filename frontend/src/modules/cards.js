@@ -2,7 +2,7 @@
 export const createCard = function(body) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
     credentials: 'include',
-    method: 'post', 
+    method: 'post',
     body: JSON.stringify(body),
     headers: {
       'Accept': 'application/json',
@@ -57,7 +57,7 @@ export const getReceivedCard = function(id) {
   });
 };
 
-//for card index 
+//for card index
 export const getAllBelongingCards = function() {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
     method: 'get',
@@ -125,7 +125,6 @@ export const getThemes = function() {
     method: 'get',
   }).then(res => {
     if (res.ok) {
-      console.log(process.env)
       return res.json();
     } else {
       throw Error(`Request rejected with status ${res.status}`);
