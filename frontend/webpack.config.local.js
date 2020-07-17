@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: __dirname + '/src/index.js',
   output: {
-    path: path.resolve('dist/'),
+    path: __dirname + "/dist",
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   devServer: {
     historyApiFallback: true,
@@ -16,9 +16,6 @@ module.exports = {
     port: 8080,
     watchContentBase: true,
     disableHostCheck: true
-  },
-  node: {
-    fs: 'empty'
   },
   module: {
     rules: [
@@ -45,7 +42,7 @@ module.exports = {
   plugins: [
     new Dotenv({path: './.env.local'}),
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: 'public/index.html'
     })
   ]
 }
