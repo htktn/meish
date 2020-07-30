@@ -1,8 +1,8 @@
 //for card new
-export const createCard = function(body) {
+export const createCard = function (body) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
     credentials: 'include',
-    method: 'post', 
+    method: 'post',
     body: JSON.stringify(body),
     headers: {
       'Accept': 'application/json',
@@ -22,7 +22,7 @@ export const createCard = function(body) {
 };
 
 //for card show
-export const getBelongingCard = function(id) {
+export const getBelongingCard = function (id) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`, {
     method: 'get',
     credentials: 'include',
@@ -40,7 +40,7 @@ export const getBelongingCard = function(id) {
 };
 
 //for user card show. 他の人のカードのshow
-export const getReceivedCard = function(id) {
+export const getReceivedCard = function (id) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/other_cards/${id}`, {
     method: 'get',
     credentials: 'include',
@@ -58,7 +58,7 @@ export const getReceivedCard = function(id) {
 };
 
 //for card index 
-export const getAllBelongingCards = function() {
+export const getAllBelongingCards = function () {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/cards`, {
     method: 'get',
     credentials: 'include',
@@ -76,7 +76,7 @@ export const getAllBelongingCards = function() {
 };
 
 //for user card index. ユーザーが交換したカード一覧用
-export const getAllReceivedCards = function() {
+export const getAllReceivedCards = function () {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/other_cards`, {
     method: 'get',
     credentials: 'include',
@@ -94,21 +94,26 @@ export const getAllReceivedCards = function() {
 };
 
 //PUT /cards/:id
-export const updateCard = function(id, body) {
+export const updateCard = function (id, body) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`, { method: 'put', body: JSON.stringify(body) })
-  .then(res => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw Error(`Request rejected with status ${res.status}`);
-    }
-  });
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw Error(`Request rejected with status ${res.status}`);
+      }
+    });
 };
 
 //DELETE /cards/:id
-export const deleteCard = function(id) {
+export const deleteCard = function (id) {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`, {
+    credentials: 'include',
     method: 'delete',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   }).then(res => {
     if (res.ok) {
       return res.json();
@@ -119,7 +124,7 @@ export const deleteCard = function(id) {
 };
 
 //GET /themes
-export const getThemes = function() {
+export const getThemes = function () {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/themes`, {
     credentials: 'include',
     method: 'get',
@@ -134,7 +139,7 @@ export const getThemes = function() {
 };
 
 //GET /types
-export const getTypes = function() {
+export const getTypes = function () {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/types`, {
     method: 'get',
   }).then(res => {
