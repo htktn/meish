@@ -21,11 +21,6 @@
     "webpack-node-externals": "^2.5.0"
   },
   "scripts": {
-    "start": "rm -rf dist && webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.local.js && cp -r public dist/public && node dist/server.js",
-    "start:development": "rm -rf dist && webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.development.js && cp -r public dist/public && node dist/server.js",
-    "start:production": "webpack-dev-server --mode production --config webpack.config.production.js",
-    "build": "rm -rf dist && webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.local.js",
-    "build:development": "webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.local.js",
     "build:production": "webpack --mode production --config webpack.config.development.js && cp _redirects dist/ && cp -r public dist/public"
   },
   "devDependencies": {
