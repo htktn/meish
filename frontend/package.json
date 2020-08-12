@@ -21,12 +21,16 @@
     "webpack-node-externals": "^2.5.0"
   },
   "scripts": {
-    "start": "rm -rf dist && webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.local.js && cp -r public dist/public && node dist/server.js",
-    "start:development": "rm -rf dist && webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.development.js && cp -r public dist/public && node dist/server.js",
-    "start:production": "rm -rf dist && webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.production.js && cp -r public dist/public && node dist/server.js",
-    "build": "rm -rf dist && webpack --mode production --config webpack.config.server.js && webpack --mode production --config webpack.config.local.js",
-    "build:development": "webpack --mode production --config webpack.config.development.js && cp -r public dist/public",
-    "build:production": "webpack --mode production --config webpack.config.development.js && cp -r public dist/public"
+    "clean": "rm -rf dist",
+    "copyPublic": "cp -r public dist/public",
+    "start": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.local.js && yarn copyPublic && yarn start:server",
+    "start:server": "node dist/server.js",
+    "start:development": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.development.js && yarn copyPublic && yarn start:server",
+    "start:production": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.production.js && yarn copyPublic && yarn start:server",
+    "build:server": "webpack --mode production --config webpack.config.server.js",
+    "build": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.local.js",
+    "build:development": "webpack --mode production --config webpack.config.development.js && yarn copyPublic",
+    "build:production": "webpack --mode production --config webpack.config.development.js && yarn copyPublic"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
