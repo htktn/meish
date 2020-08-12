@@ -21,7 +21,7 @@
     "webpack-node-externals": "^2.5.0"
   },
   "scripts": {
-    "build:production": "webpack --mode production --config webpack.config.development.js && cp _redirects dist/ && cp -r public dist/public"
+    "build:development": "webpack --mode production --config webpack.config.development.js && cp _redirects dist/ && cp -r public dist/public"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
