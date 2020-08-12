@@ -29,8 +29,8 @@
     "start:production": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.production.js && yarn copyPublic && yarn start:server",
     "build:server": "webpack --mode production --config webpack.config.server.js",
     "build": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.local.js",
-    "build:development": "webpack --mode production --config webpack.config.development.js && yarn copyPublic",
-    "build:production": "webpack --mode production --config webpack.config.development.js && yarn copyPublic"
+    "build:development": "webpack --mode production --config webpack.config.development.js && cp -r public dist/public",
+    "build:production": "webpack --mode production --config webpack.config.development.js && cp -r public dist/public"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
