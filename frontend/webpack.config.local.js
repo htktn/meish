@@ -5,9 +5,6 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
-  // entry: {
-  //   server: path.resolve(__dirname, 'src/server.js'),
-  // },
   target: 'node',
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -50,10 +47,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g)$/i,
-        loader: 'url-loader',
-        // options: {
-        //   limit: 8192,
-        // },
+        loader: 'file-loader',
       },
     ],
   },
