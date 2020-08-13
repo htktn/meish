@@ -4,21 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
-    path: path.resolve('dist/'),
+    path: path.resolve(__dirname, "dist"),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   devServer: {
     historyApiFallback: true,
     host: '0.0.0.0',
     port: 8080,
-    watchContentBase: true,
+    contentBase: path.join(__dirname, 'dist'),
     disableHostCheck: true
-  },
-  node: {
-    fs: 'empty'
   },
   module: {
     rules: [
@@ -26,26 +23,30 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react"
+            ],
+            plugins: [
+              ["@babel/plugin-proposal-decorators", {"legacy": true}],
+              "@babel/plugin-proposal-class-properties",
+            ]
+          }
+        },
       },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.(png|jpe?g)$/i,
-        loader: 'url-loader',
-        options: {
-          limit: 8192,
-        },
       },
     ],
   },
   plugins: [
     new Dotenv({path: './.env.local'}),
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: 'public/index.html',
+      excludeChunks: ['server']
     })
   ]
 }

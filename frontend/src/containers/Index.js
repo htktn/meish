@@ -8,8 +8,6 @@ import Tab from '@material-ui/core/Tab';
 import Slide from '@material-ui/core/Fade';
 import Card from '../components/Card'
 import { getAllBelongingCards, getAllReceivedCards } from '../modules/cards';
-import addMeishi from '../../public/component/add-meishi.png'
-
 import "./css/index.css";
 
 @withStyles(theme => ({
@@ -136,7 +134,7 @@ const Cards = withStyles((theme) => ({
     <Slide direction='down' in={true} timeout={1000}>
       <div className="tab_mycard">
         {cards.map((card, i) => <Card card={card} key={i} link />)}
-        <img className="ad-box" src={addMeishi} alt="いろんな名刺を増やせます" />
+        <img className="ad-box" src='../../public/component/add-meishi.png' alt="いろんな名刺を増やせます" />
       </div>
     </Slide>
   )
