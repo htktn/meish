@@ -19,7 +19,8 @@
   "scripts": {
     "clean": "rm -rf dist",
     "copyPublic": "cp -r public dist/public",
-    "start": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.local.js && yarn copyPublic && yarn start:server",
+    "start": "webpack-dev-server --config webpack.config.local.js",
+    "start:local": "yarn clean && yarn build:server && webpack --mode development --config webpack.config.local.js && yarn copyPublic && yarn start:server",
     "start:server": "node dist/server.js",
     "start:development": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.development.js && yarn copyPublic && yarn start:server",
     "start:production": "yarn clean && yarn build:server && webpack --mode production --config webpack.config.production.js && yarn copyPublic && yarn start:server",
