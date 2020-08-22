@@ -39,7 +39,6 @@ module.exports = {
     new Dotenv({path: './.env.development'}),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      excludeChunks: ['server']
     })
   ]
 }
