@@ -35,6 +35,7 @@ jobs:
       DB_USERNAME: root
       DB_PASSWORD: password
       DB_HOST: 127.0.0.1
+      FRONTEND_URL: http://localhost:8080
     runs-on: ubuntu-latest
     services:
       mysql:
