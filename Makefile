@@ -42,7 +42,7 @@ web/test:
 	@$(FIG) run web bundle exec rspec
 
 env:
-	cp .env.example .env
+	cp web/.env.example web/.env
 	cp frontend/.env.example frontend/.env.local
 
 migrate/up:
