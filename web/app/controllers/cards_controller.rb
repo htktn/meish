@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_card, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :update, :destroy]
+  before_action :set_card, only: [:update, :destroy]
 
   # {
   #   informations: [
@@ -37,6 +37,7 @@ class CardsController < ApplicationController
   end
 
   def show
+    @card = Card.find_by(id: params[:id])
     card = {
       id: @card.id,
       name: @card.name,
