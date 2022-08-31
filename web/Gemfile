@@ -29,7 +29,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 認証とか
 gem 'devise'
-gem 'omniauth', '~> 1.9.1'
+gem 'omniauth', '~> 1.9.2'
 gem 'omniauth-twitter'
 
 # DB
